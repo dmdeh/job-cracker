@@ -1,0 +1,36 @@
+.card {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 4px #e5e7eb;
+  background-color: var(--color-cardBackground);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-weight: 600;
+  color: var(--color-main);
+}
+
+.description {
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  background-color: var(--color-type);
+  color: white;
+}
