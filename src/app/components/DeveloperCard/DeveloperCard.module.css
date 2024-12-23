@@ -3,6 +3,7 @@
   border-radius: 0.5rem;
   box-shadow: 5px 5px 4px #e5e7eb;
   background-color: var(--color-cardBackground);
+  cursor: pointer;
 }
 
 .header {

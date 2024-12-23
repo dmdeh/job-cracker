@@ -2,12 +2,12 @@ const developers = [
   {
     title: "Frontend Developer",
     description: "UI/UX에 관심이 많고, 사용자 경험을 개선하는 것을 즐기시나요?",
-    technologies: ["React", "JavaScript", "HTML/CSS", "Next.JS"],
+    technologies: ["React", "JavaScript", "TypeScript", "HTML/CSS"],
   },
   {
     title: "Backend Developer",
     description: "서버 로직과 데이터 처리에 더 흥미를 느끼시나요?",
-    technologies: ["Java", "Node.js", "Python", "Database"],
+    technologies: ["Java", "Node.js", "Spring", "Database"],
   },
   {
     title: "iOS Developer",
