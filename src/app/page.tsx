@@ -21,7 +21,7 @@ export default function Home() {
       />
       <button
         className={styles.button}
-        onClick={() => router.push("/selection")}
+        onClick={() => router.push("/selection/developer")}
       >
         시작하기
       </button>
