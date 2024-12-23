@@ -9,7 +9,8 @@ export default function Developer() {
   const router = useRouter();
 
   const handleCardClick = (title: string) => {
-    router.push(`/selection/topics?topic=${title}`);
+    const topic = title.split(" ")[0];
+    router.push(`/selection/topics?topic=${topic}`);
   };
 
   return (
