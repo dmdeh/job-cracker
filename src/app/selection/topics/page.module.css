@@ -5,10 +5,12 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding: 1rem;
 }
 
 .header {
-  width: 100vh;
+  width: 100%;
+  max-width: 100vh;
   color: var(--color-main);
 }
 
@@ -24,6 +26,12 @@
   box-shadow: 5px 5px 4px #e5e7eb;
   background-color: var(--color-cardBackground);
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.selected {
+  background-color: var(--color-main);
+  color: white;
 }
 
 .button {
@@ -33,4 +41,12 @@
   box-shadow: 5px 5px 4px #e5e7eb;
   background-color: var(--color-cardBackground);
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid var(--color-main);
+  font-size: 1.1rem;
+}
+
+.buttonDisabled {
+  cursor: not-allowed;
+  border: unset;
 }
