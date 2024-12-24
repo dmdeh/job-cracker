@@ -21,10 +21,9 @@ export default function Home() {
         priority
       />
       <Button
-        onClick={() => router.push("/selection")}
-        backgroundColor="var(--color-yellow)"
         color="white"
         fontSize="2rem"
+        onClick={() => router.push("/selection")}
       >
         시작하기
       </Button>
