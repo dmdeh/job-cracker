@@ -18,7 +18,7 @@
 .title {
   font-size: 6rem;
   font-weight: bold;
-  color: var(--color-typeButton);
+  color: var(--color-yellow);
   text-align: center;
   white-space: nowrap;
   text-shadow: 10px 0px 2px white;
@@ -41,7 +41,7 @@
 }
 
 .button {
-  background-color: var(--color-typeButton);
+  background-color: var(--color-yellow);
   font-size: 2rem;
   padding: 10px;
   width: 200px;
