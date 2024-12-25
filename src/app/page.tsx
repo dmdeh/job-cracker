@@ -3,6 +3,7 @@
 import styles from "./page.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Button from "./common/Button/Button";
 
 export default function Home() {
   const router = useRouter();
@@ -19,12 +20,13 @@ export default function Home() {
         height={500}
         priority
       />
-      <button
-        className={styles.button}
-        onClick={() => router.push("/selection/developer")}
+      <Button
+        color="white"
+        fontSize="2rem"
+        onClick={() => router.push("/selection")}
       >
         시작하기
-      </button>
+      </Button>
     </main>
   );
 }

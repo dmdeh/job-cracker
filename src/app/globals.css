@@ -1,10 +1,9 @@
 :root {
   --color-background: #fefbf3;
-  --color-cardBackground: #fffcfb;
-  --color-main: #2b4c7e;
-  --color-accent: #ff6b35;
-  --color-type: #fecf75;
-  --color-text: #1f364d;
+  --color-blue100: #2b4c7e;
+  --color-blue200: #1f364d;
+  --color-orange: #ff6b35;
+  --color-yellow: #fecf75;
 }
 
 html,
