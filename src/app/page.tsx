@@ -23,7 +23,7 @@ export default function Home() {
       <Button
         color="white"
         fontSize="2rem"
-        onClick={() => router.push("/selection")}
+        onClick={() => router.push("/selection/developer")}
       >
         시작하기
       </Button>

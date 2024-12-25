@@ -1,7 +1,7 @@
 "use client";
 
 import developers from "@/app/constants/developer";
-import styles from "./page.module.css";
+import styles from "./developer.module.css";
 import { DeveloperCard } from "@/app/components/DeveloperCard/DeveloperCard";
 import { useRouter } from "next/navigation";
 

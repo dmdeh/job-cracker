@@ -1,9 +1,11 @@
 :root {
   --color-background: #fefbf3;
+  --color-background-light: #fffefb;
   --color-blue100: #2b4c7e;
   --color-blue200: #1f364d;
   --color-orange: #ff6b35;
   --color-yellow: #fecf75;
+  --color-gray100: #e5e7eb;
 }
 
 html,

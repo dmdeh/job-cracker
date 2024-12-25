@@ -1,37 +1,36 @@
 .card {
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  box-shadow: 5px 5px 4px #e5e7eb;
-  background-color: var(--color-cardBackground);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 4px var(--color-gray100);
+  background-color: var(--color-background-light);
   cursor: pointer;
 }
 
 .header {
+  margin-bottom: 15px;
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .title {
   font-weight: 600;
-  color: var(--color-main);
+  color: var(--color-blue100);
 }
 
 .description {
-  color: var(--color-text);
-  margin-bottom: 1rem;
+  color: var(--color-blue200);
 }
 
 .tagContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 .tag {
-  padding: 0.3rem 0.7rem;
+  padding: 5px 10px;
   border-radius: 20px;
-  background-color: var(--color-type);
+  background-color: var(--color-yellow);
   color: white;
 }
