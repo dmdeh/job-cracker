@@ -5,7 +5,7 @@ import { useState } from "react";
 import styles from "./topics.module.css";
 import { TOPIC_MAP, TopicKey } from "@/app/constants/topics";
 import Button from "@/app/common/Button/Button";
-import clsx from "clsx";
+import { buttonClass, cardClass } from "@/app/utils/className";
 
 export default function Topics() {
   const searchParams = useSearchParams();
@@ -20,6 +20,7 @@ export default function Topics() {
   const toggleSelectAll = () => {
     if (isAllSelected) {
       setSelected([]);
+      return;
     }
     setSelected(allTopics);
   };
@@ -79,16 +80,4 @@ function getTopic(value: string | null): TopicKey | null {
     return value;
   }
   return null;
-}
-
-function cardClass(selected: boolean) {
-  return clsx(styles.card, {
-    [styles.selected]: selected,
-  });
-}
-
-function buttonClass(disabled: boolean) {
-  return clsx(styles.button, {
-    [styles.buttonDisabled]: disabled,
-  });
 }
