@@ -15,8 +15,10 @@ export function DeveloperCard({
   const router = useRouter();
 
   const handleCardClick = (title: string) => {
-    router.push(`/selection/topics?topic=${title}`);
+    const [topic] = title.split(" ");
+    router.push(`/selection/topics?topic=${topic}`);
   };
+
   return (
     <div className={styles.card} onClick={() => handleCardClick(title)}>
       <div className={styles.header}>

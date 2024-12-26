@@ -21,8 +21,11 @@ export default function Home() {
         priority
       />
       <Button
+        backgroundColor="var(--color-yellow)"
         color="white"
         fontSize="2rem"
+        width={200}
+        className={styles.button}
         onClick={() => router.push("/selection/developer")}
       >
         시작하기

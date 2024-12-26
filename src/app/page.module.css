@@ -37,3 +37,8 @@
       0 50px 30px rgba(0, 0, 0, 0.3);
   }
 }
+
+.button {
+  border: none;
+  box-shadow: 5px 5px 4px var(--color-gray100);
+}
