@@ -6,6 +6,7 @@ import styles from "./topics.module.css";
 import { TOPIC_MAP, TopicKey } from "@/app/constants/topics";
 import Button from "@/app/components/common/Button/Button";
 import clsx from "clsx";
+import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
 
 export default function Topics() {
   const searchParams = useSearchParams();
@@ -44,17 +45,20 @@ export default function Topics() {
         <h1>어떤 주제로 {topic} 면접을 원하시나요?</h1>
       </div>
       <div className={styles.grid}>
-        <div className={cardClass(isAllSelected)} onClick={toggleSelectAll}>
-          <h3>전체 선택</h3>
-        </div>
+        <SelectionCard
+          title="전체 선택"
+          isSelected={isAllSelected}
+          onClick={toggleSelectAll}
+          className={cardClass(isAllSelected)}
+        />
         {allTopics.map((topic) => (
-          <div
+          <SelectionCard
             key={topic}
-            className={cardClass(selected.includes(topic))}
+            title={topic}
+            isSelected={selected.includes(topic)}
             onClick={() => toggleSelectTopic(topic)}
-          >
-            <h3>{topic}</h3>
-          </div>
+            className={cardClass(selected.includes(topic))}
+          />
         ))}
       </div>
       <Button
