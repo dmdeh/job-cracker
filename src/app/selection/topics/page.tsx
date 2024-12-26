@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import styles from "./topics.module.css";
 import { TOPIC_MAP, TopicKey } from "@/app/constants/topics";
-import Button from "@/app/common/Button/Button";
+import Button from "@/app/components/common/Button/Button";
 import clsx from "clsx";
 
 export default function Topics() {
