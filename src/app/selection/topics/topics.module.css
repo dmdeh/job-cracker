@@ -22,21 +22,15 @@
 
 .card {
   color: var(--color-blue100);
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  box-shadow: 5px 5px 4px var(--color-gray100);
   background-color: var(--color-background-light);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
 }
 
 .selected {
-  background-color: var(--color-blue100);
   color: white;
+  background-color: var(--color-blue100);
 }
 
 .button {
   box-shadow: 5px 5px 4px var(--color-gray100);
-  transition: all 0.2s ease-in-out;
   border: 2px solid var(--color-blue100);
 }
