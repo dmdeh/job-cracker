@@ -5,6 +5,7 @@ import { useState } from "react";
 import styles from "./topics.module.css";
 import { TOPIC_MAP, TopicKey } from "@/app/constants/topics";
 import Button from "@/app/common/Button/Button";
+import clsx from "clsx";
 
 export default function Topics() {
   const searchParams = useSearchParams();
@@ -47,10 +48,6 @@ export default function Topics() {
     router.push(`/selection/topics/contents?selected=${selected.join(",")}`);
   };
 
-  const buttonClasses = `${styles.button} ${
-    selected.length === 0 ? styles.buttonDisabled : ""
-  }`;
-
   return (
     <div className={styles.page}>
       <div className={styles.header}>
@@ -58,7 +55,7 @@ export default function Topics() {
       </div>
       <div className={styles.grid}>
         <div
-          className={`${styles.card} ${isAllSelected && styles.selected}`}
+          className={clsx(styles.card, { [styles.selected]: isAllSelected })}
           onClick={toggleSelectAll}
         >
           <h3>전체 선택</h3>
@@ -79,7 +76,9 @@ export default function Topics() {
         backgroundColor="var(--color-background-light)"
         width={100}
         height={50}
-        className={buttonClasses}
+        className={clsx(styles.button, {
+          [styles.buttonDisabled]: selected.length === 0,
+        })}
         onClick={handleConfirm}
         disabled={selected.length === 0}
       >
