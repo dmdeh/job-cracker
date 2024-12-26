@@ -9,27 +9,44 @@ import Button from "@/app/common/Button/Button";
 export default function Topics() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const topic = searchParams.get("topic") as TopicKey;
   const [selected, setSelected] = useState<string[]>([]);
 
+  function isTopic(value: string | null): value is TopicKey {
+    return value !== null && Object.keys(TOPIC_MAP).includes(value);
+  }
+
+  function getTopic(value: string | null): TopicKey | null {
+    if (isTopic(value)) {
+      return value;
+    }
+    return null;
+  }
+
+  const topic = getTopic(searchParams.get("topic"));
   const selectedTopics = topic ? TOPIC_MAP[topic] : {};
   const allTopics = Object.keys(selectedTopics);
   const isAllSelected = selected.length === allTopics.length;
 
-  const toggleSelectAll = () => setSelected(isAllSelected ? [] : allTopics);
+  const toggleSelectAll = () => {
+    if (isAllSelected) {
+      setSelected([]);
+    }
+    setSelected(allTopics);
+  };
 
   const toggleSelectTopic = (item: string) => {
-    setSelected((prev) =>
-      prev.includes(item)
-        ? prev.filter((selectedItem) => selectedItem !== item)
-        : [...prev, item]
-    );
+    if (selected.includes(item)) {
+      setSelected(selected.filter((selectedItem) => selectedItem !== item));
+      return;
+    }
+    setSelected([...selected, item]);
   };
 
   const handleConfirm = () => {
     if (!selected.length) return;
     router.push(`/selection/topics/contents?selected=${selected.join(",")}`);
   };
+
   const buttonClasses = `${styles.button} ${
     selected.length === 0 ? styles.buttonDisabled : ""
   }`;
@@ -46,15 +63,15 @@ export default function Topics() {
         >
           <h3>전체 선택</h3>
         </div>
-        {allTopics.map((key) => (
+        {allTopics.map((topic) => (
           <div
-            key={key}
+            key={topic}
             className={`${styles.card} ${
-              selected.includes(key) && styles.selected
+              selected.includes(topic) && styles.selected
             }`}
-            onClick={() => toggleSelectTopic(key)}
+            onClick={() => toggleSelectTopic(topic)}
           >
-            <h3>{key}</h3>
+            <h3>{topic}</h3>
           </div>
         ))}
       </div>

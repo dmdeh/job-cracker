@@ -18,7 +18,7 @@ const Button = (props: Props) => {
   const {
     onClick,
     children,
-    className = styles.button,
+    className,
     disabled,
     ...style
   } = props;

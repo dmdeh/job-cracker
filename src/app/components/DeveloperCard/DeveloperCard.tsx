@@ -15,7 +15,7 @@ export function DeveloperCard({
   const router = useRouter();
 
   const handleCardClick = (title: string) => {
-    const topic = title.split(" ")[0];
+    const [topic] = title.split(" ");
     router.push(`/selection/topics?topic=${topic}`);
   };
 
