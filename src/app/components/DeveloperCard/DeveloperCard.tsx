@@ -1,5 +1,5 @@
 import styles from "./DeveloperCard.module.css";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface DeveloperCardProps {
   title: string;
@@ -12,26 +12,23 @@ export function DeveloperCard({
   description,
   topics,
 }: DeveloperCardProps) {
-  const router = useRouter();
-
-  const handleCardClick = (title: string) => {
-    const [topic] = title.split(" ");
-    router.push(`/selection/topics?topic=${topic}`);
-  };
+  const [topic] = title.split(" ");
 
   return (
-    <div className={styles.card} onClick={() => handleCardClick(title)}>
-      <div className={styles.header}>
-        <h2 className={styles.title}>{title}</h2>
-        <p className={styles.description}>{description}</p>
+    <Link href={`/selection/topics?topic=${topic}`} className={styles.card}>
+      <div>
+        <div className={styles.header}>
+          <h2 className={styles.title}>{title}</h2>
+          <p className={styles.description}>{description}</p>
+        </div>
+        <div className={styles.tagContainer}>
+          {topics.map((topic) => (
+            <span key={topic} className={styles.tag}>
+              {topic}
+            </span>
+          ))}
+        </div>
       </div>
-      <div className={styles.tagContainer}>
-        {topics.map((topic) => (
-          <span key={topic} className={styles.tag}>
-            {topic}
-          </span>
-        ))}
-      </div>
-    </div>
+    </Link>
   );
 }

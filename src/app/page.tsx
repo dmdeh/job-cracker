@@ -1,13 +1,8 @@
-"use client";
-
 import styles from "./page.module.css";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import Button from "./components/common/Button/Button";
+import Link from "next/link";
 
 export default function Home() {
-  const router = useRouter();
-
   return (
     <main className={styles.page}>
       <div className={styles.titleWrapper}>
@@ -20,16 +15,9 @@ export default function Home() {
         height={500}
         priority
       />
-      <Button
-        backgroundColor="var(--color-yellow)"
-        color="white"
-        fontSize="2rem"
-        width={200}
-        className={styles.button}
-        onClick={() => router.push("/selection/developer")}
-      >
+      <Link href="/selection/developer" className={styles.nav}>
         시작하기
-      </Button>
+      </Link>
     </main>
   );
 }
