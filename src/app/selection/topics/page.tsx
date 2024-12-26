@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import styles from "./page.module.css";
+import styles from "./topics.module.css";
 import { TOPIC_MAP, TopicKey } from "@/app/constants/topics";
 
 export default function Topics() {

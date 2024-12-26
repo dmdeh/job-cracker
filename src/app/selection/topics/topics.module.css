@@ -11,7 +11,7 @@
 .header {
   width: 100%;
   max-width: 100vh;
-  color: var(--color-main);
+  color: var(--color-blue100);
 }
 
 .grid {
@@ -21,16 +21,17 @@
 }
 
 .card {
+  color: var(--color-blue100);
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 5px 5px 4px #e5e7eb;
-  background-color: var(--color-cardBackground);
+  background-color: var(--color-background-light);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .selected {
-  background-color: var(--color-main);
+  background-color: var(--color-blue100);
   color: white;
 }
 
@@ -42,7 +43,7 @@
   background-color: var(--color-cardBackground);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  border: 2px solid var(--color-main);
+  border: 2px solid var(--color-blue100);
   font-size: 1.1rem;
 }
 

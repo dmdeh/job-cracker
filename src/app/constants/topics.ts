@@ -1,4 +1,4 @@
-const TOPICS_Frontend = {
+const TOPICS_FRONTEND = {
   "HTML / CSS": [
     "시맨틱 태그",
     "Flexbox / Grid 레이아웃",
@@ -43,7 +43,7 @@ const TOPICS_Frontend = {
   ],
 };
 
-const TOPICS_Backend = {
+const TOPICS_BACKEND = {
   Java: [
     "Java 언어 기초",
     "객체지향 프로그래밍 (OOP) 개념",
@@ -89,7 +89,7 @@ const TOPICS_Backend = {
   ],
 };
 
-const TOPICS_iOS = {
+const TOPICS_IOS = {
   Swift: [
     "Swift 기초 문법",
     "옵셔널",
@@ -119,9 +119,9 @@ const TOPICS_iOS = {
 };
 
 export const TOPIC_MAP = {
-  Frontend: TOPICS_Frontend,
-  Backend: TOPICS_Backend,
-  iOS: TOPICS_iOS,
+  Frontend: TOPICS_FRONTEND,
+  Backend: TOPICS_BACKEND,
+  iOS: TOPICS_IOS,
 };
 
 export type TopicKey = keyof typeof TOPIC_MAP;
