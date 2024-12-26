@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import styles from "./topics.module.css";
 import { TOPIC_MAP, TopicKey } from "@/app/constants/topics";
+import Button from "@/app/common/Button/Button";
 
 export default function Topics() {
   const searchParams = useSearchParams();
@@ -29,6 +30,9 @@ export default function Topics() {
     if (!selected.length) return;
     router.push(`/selection/topics/contents?selected=${selected.join(",")}`);
   };
+  const buttonClasses = `${styles.button} ${
+    selected.length === 0 ? styles.buttonDisabled : ""
+  }`;
 
   return (
     <div className={styles.page}>
@@ -45,20 +49,25 @@ export default function Topics() {
         {allTopics.map((key) => (
           <div
             key={key}
-            className={`${styles.card} ${selected.includes(key) && styles.selected}`}
+            className={`${styles.card} ${
+              selected.includes(key) && styles.selected
+            }`}
             onClick={() => toggleSelectTopic(key)}
           >
             <h3>{key}</h3>
           </div>
         ))}
       </div>
-      <button
-        className={`${styles.button} ${selected.length === 0 && styles.buttonDisabled}`}
+      <Button
+        backgroundColor="var(--color-background-light)"
+        width={100}
+        height={50}
+        className={buttonClasses}
         onClick={handleConfirm}
         disabled={selected.length === 0}
       >
         확인
-      </button>
+      </Button>
     </div>
   );
 }

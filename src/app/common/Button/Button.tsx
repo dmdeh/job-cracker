@@ -10,13 +10,25 @@ interface Props
   > {
   onClick: () => void;
   children: ReactNode;
+  className?: string;
+  disabled?: boolean;
 }
 
 const Button = (props: Props) => {
-  const { onClick, children } = props;
-
+  const {
+    onClick,
+    children,
+    className = styles.button,
+    disabled,
+    ...style
+  } = props;
   return (
-    <button style={{ ...props }} className={styles.button} onClick={onClick}>
+    <button
+      style={{ ...style }}
+      className={`${styles.button} ${className}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
