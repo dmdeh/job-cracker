@@ -1,5 +1,6 @@
 import { CSSProperties, ReactNode } from "react";
 import styles from "./button.module.css";
+import clsx from "clsx";
 
 interface Props
   extends Partial<
@@ -19,7 +20,7 @@ const Button = (props: Props) => {
   return (
     <button
       style={{ ...style }}
-      className={`${styles.button} ${className}`}
+      className={clsx(styles.button, className)}
       onClick={onClick}
       disabled={disabled}
     >
