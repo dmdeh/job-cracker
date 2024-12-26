@@ -3,15 +3,8 @@
 import developers from "@/app/constants/developer";
 import styles from "./developer.module.css";
 import { DeveloperCard } from "@/app/components/DeveloperCard/DeveloperCard";
-import { useRouter } from "next/navigation";
 
 export default function Developer() {
-  const router = useRouter();
-
-  const handleCardClick = (title: string) => {
-    router.push(`/selection/topics?topic=${title}`);
-  };
-
   return (
     <div className={styles.page}>
       <div className={styles.header}>
@@ -20,9 +13,7 @@ export default function Developer() {
       </div>
       <div className={styles.grid}>
         {developers.map((dev) => (
-          <div key={dev.title} onClick={() => handleCardClick(dev.title)}>
-            <DeveloperCard {...dev} />
-          </div>
+          <DeveloperCard key={dev.title} {...dev} />
         ))}
       </div>
     </div>

@@ -1,4 +1,5 @@
 import styles from "./DeveloperCard.module.css";
+import { useRouter } from "next/navigation";
 
 interface DeveloperCardProps {
   title: string;
@@ -11,8 +12,13 @@ export function DeveloperCard({
   description,
   topics,
 }: DeveloperCardProps) {
+  const router = useRouter();
+
+  const handleCardClick = (title: string) => {
+    router.push(`/selection/topics?topic=${title}`);
+  };
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={() => handleCardClick(title)}>
       <div className={styles.header}>
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.description}>{description}</p>
