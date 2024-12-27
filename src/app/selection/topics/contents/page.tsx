@@ -36,8 +36,8 @@ export default function Contents() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <h1>주제를 선택해주세요.</h1>
-        <p>주제를 선택하시면 맞춤형 면접을 진행할 수 있습니다.</p>
+        <h1>주제를 선택해주세요! {selected.length} / {topicContents.length}</h1>
+        <p>당신을 위한 맞춤형 면접이 진행됩니다.</p>
       </div>
       <div className={styles.grid}>
         <SelectionCard
