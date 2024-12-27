@@ -16,6 +16,23 @@
 
 .grid {
   width: 100vh;
+  height: 500px;
   display: grid;
   gap: 1.5rem;
+  overflow-y: scroll;
+}
+
+.card {
+  color: var(--color-blue100);
+  background-color: var(--color-background-light);
+}
+
+.selected {
+  color: white;
+  background-color: var(--color-blue100);
+}
+
+.button {
+  box-shadow: 5px 5px 4px var(--color-gray100);
+  border: 2px solid var(--color-blue100);
 }
