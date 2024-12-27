@@ -3,10 +3,11 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import styles from "./topics.module.css";
-import { TOPIC_MAP, TopicKey } from "@/app/constants/topics";
+import { TOPIC_MAP } from "@/app/constants/topics";
 import Button from "@/app/components/common/Button/Button";
 import clsx from "clsx";
 import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
+import { getTopic } from "@/app/utils/checkTopic";
 
 export default function Topics() {
   const searchParams = useSearchParams();
@@ -36,7 +37,9 @@ export default function Topics() {
 
   const handleConfirm = () => {
     if (!selected.length) return;
-    router.push(`/selection/topics/contents?selected=${selected.join(",")}`);
+    router.push(
+      `/selection/topics/contents?topic=${topic}&selected=${selected.join(",")}`
+    );
   };
 
   return (
@@ -73,17 +76,6 @@ export default function Topics() {
       </Button>
     </div>
   );
-}
-
-function isTopic(value: string | null): value is TopicKey {
-  return value !== null && Object.keys(TOPIC_MAP).includes(value);
-}
-
-function getTopic(value: string | null): TopicKey | null {
-  if (isTopic(value)) {
-    return value;
-  }
-  return null;
 }
 
 function cardClass(selected: boolean) {
