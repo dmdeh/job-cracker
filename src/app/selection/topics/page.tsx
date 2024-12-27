@@ -8,6 +8,10 @@ import Button from "@/app/components/common/Button/Button";
 import clsx from "clsx";
 import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
 import { getTopic } from "@/app/utils/checkTopic";
+import {
+  toggleSelectAll,
+  toggleSelectTopic,
+} from "@/app/utils/toggleSelection";
 
 export default function Topics() {
   const searchParams = useSearchParams();
@@ -18,22 +22,6 @@ export default function Topics() {
   const selectedTopics = topic ? TOPIC_MAP[topic] : {};
   const allTopics = Object.keys(selectedTopics);
   const isAllSelected = selected.length === allTopics.length;
-
-  const toggleSelectAll = () => {
-    if (isAllSelected) {
-      setSelected([]);
-      return;
-    }
-    setSelected(allTopics);
-  };
-
-  const toggleSelectTopic = (item: string) => {
-    if (selected.includes(item)) {
-      setSelected(selected.filter((selectedItem) => selectedItem !== item));
-      return;
-    }
-    setSelected([...selected, item]);
-  };
 
   const handleConfirm = () => {
     if (!selected.length) return;
@@ -51,7 +39,7 @@ export default function Topics() {
         <SelectionCard
           title="전체 선택"
           isSelected={isAllSelected}
-          onClick={toggleSelectAll}
+          onClick={() => toggleSelectAll(isAllSelected, setSelected, allTopics)}
           className={cardClass(isAllSelected)}
         />
         {allTopics.map((topic) => (
@@ -59,7 +47,7 @@ export default function Topics() {
             key={topic}
             title={topic}
             isSelected={selected.includes(topic)}
-            onClick={() => toggleSelectTopic(topic)}
+            onClick={() => toggleSelectTopic(topic, selected, setSelected)}
             className={cardClass(selected.includes(topic))}
           />
         ))}

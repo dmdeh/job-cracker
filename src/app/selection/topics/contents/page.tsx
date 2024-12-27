@@ -8,6 +8,10 @@ import { useState } from "react";
 import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
 import clsx from "clsx";
 import Button from "@/app/components/common/Button/Button";
+import {
+  toggleSelectAll,
+  toggleSelectTopic,
+} from "@/app/utils/toggleSelection";
 
 export default function Contents() {
   const searchParams = useSearchParams();
@@ -24,23 +28,6 @@ export default function Contents() {
 
   const isAllSelected = selected.length === topicContents.length;
 
-  const toggleSelectAll = () => {
-    if (isAllSelected) {
-      setSelected([]);
-      return;
-    } else {
-      setSelected(topicContents);
-    }
-  };
-
-  const toggleSelectTopic = (item: string) => {
-    if (selected.includes(item)) {
-      setSelected(selected.filter((selectedItem) => selectedItem !== item));
-    } else {
-      setSelected([...selected, item]);
-    }
-  };
-
   const handleConfirm = () => {
     if (!selected.length) return;
     router.push("/question");
@@ -56,7 +43,9 @@ export default function Contents() {
         <SelectionCard
           title="전체 선택"
           isSelected={isAllSelected}
-          onClick={toggleSelectAll}
+          onClick={() =>
+            toggleSelectAll(isAllSelected, setSelected, topicContents)
+          }
           className={cardClass(isAllSelected)}
         />
         {topicContents.map((item) => (
@@ -64,7 +53,7 @@ export default function Contents() {
             key={item}
             title={item}
             isSelected={selected.includes(item)}
-            onClick={() => toggleSelectTopic(item)}
+            onClick={() => toggleSelectTopic(item, selected, setSelected)}
             className={cardClass(selected.includes(item))}
           />
         ))}
