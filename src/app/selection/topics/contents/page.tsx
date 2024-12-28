@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./contents.module.css";
 import { getTopic } from "@/app/utils/checkTopic";
-import { TOPIC_MAP } from "@/app/constants/topics";
+import { TOPIC_MAP, ContentsKey } from "@/app/constants/topics";
 import { useState } from "react";
 import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
 import clsx from "clsx";
@@ -19,12 +19,16 @@ export default function Contents() {
   const [selected, setSelected] = useState<string[]>([]);
 
   const topic = getTopic(searchParams.get("topic"));
-  const selectedTopics: { [key: string]: string[] } = topic
-    ? TOPIC_MAP[topic]
-    : {};
+  const selectedTopics = TOPIC_MAP[topic];
+
+  const isContents = (value: string): value is ContentsKey =>
+    value in selectedTopics;
 
   const contents = searchParams.get("selected")?.split(",") || [];
-  const topicContents = contents.map((key) => selectedTopics[key]).flat();
+  const topicContents = contents
+    .filter(isContents)
+    .map((key) => selectedTopics[key])
+    .flat();
 
   const isAllSelected = selected.length === topicContents.length;
 
@@ -36,7 +40,9 @@ export default function Contents() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <h1>주제를 선택해주세요! {selected.length} / {topicContents.length}</h1>
+        <h1>
+          주제를 선택해주세요! {selected.length} / {topicContents.length}
+        </h1>
         <p>당신을 위한 맞춤형 면접이 진행됩니다.</p>
       </div>
       <div className={styles.grid}>
@@ -48,15 +54,19 @@ export default function Contents() {
           }
           className={cardClass(isAllSelected)}
         />
-        {topicContents.map((item) => (
-          <SelectionCard
-            key={item}
-            title={item}
-            isSelected={selected.includes(item)}
-            onClick={() => toggleSelectTopic(item, selected, setSelected)}
-            className={cardClass(selected.includes(item))}
-          />
-        ))}
+        {topicContents.map((item) => {
+          const isSelected = selected.includes(item);
+
+          return (
+            <SelectionCard
+              key={item}
+              title={item}
+              isSelected={isSelected}
+              onClick={() => toggleSelectTopic(item, selected, setSelected)}
+              className={cardClass(isSelected)}
+            />
+          );
+        })}
       </div>
       <Button
         backgroundColor="var(--color-background-light)"

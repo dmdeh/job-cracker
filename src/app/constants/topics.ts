@@ -1,5 +1,5 @@
 const TOPICS_FRONTEND = {
-  "HTML / CSS": [
+  "HTML/CSS": [
     "시맨틱 태그",
     "Flexbox / Grid 레이아웃",
     "미디어 쿼리, 반응형 디자인",
@@ -125,3 +125,5 @@ export const TOPIC_MAP = {
 };
 
 export type TopicKey = keyof typeof TOPIC_MAP;
+
+export type ContentsKey = keyof (typeof TOPIC_MAP[TopicKey]);
