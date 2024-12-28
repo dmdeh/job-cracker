@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import styles from "./contents.module.css";
-import { TOPIC_MAP, TopicKey } from "@/app/constants/topics";
 import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
 import clsx from "clsx";
 import Button from "@/app/components/common/Button/Button";
@@ -78,13 +77,4 @@ function buttonClass(disabled: boolean) {
   });
 }
 
-export function getTopicContents(
-  topics: (typeof TOPIC_MAP)[TopicKey],
-  selectedContents: string[]
-) {
-  return Object.entries(topics)
-    .filter(([key]) => selectedContents.includes(key))
-    .reduce<string[]>((acc, [_, value]) => {
-      return [...acc, ...value];
-    }, []);
-}
+

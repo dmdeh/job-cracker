@@ -2,7 +2,7 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { getTopic } from "../utils/checkTopic";
 import { TOPIC_MAP } from "../constants/topics";
-import { getTopicContents } from "../selection/topics/contents/page";
+import getTopicContents from "../utils/getTopicContents";
 
 const useToggleSelection = (context: "topics" | "contents") => {
   const searchParams = useSearchParams();
