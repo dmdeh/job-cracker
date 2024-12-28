@@ -12,6 +12,7 @@ import {
   toggleSelectAll,
   toggleSelectTopic,
 } from "@/app/utils/toggleSelection";
+import { theme } from "@/app/constants/theme";
 
 export default function Contents() {
   const searchParams = useSearchParams();
@@ -30,7 +31,8 @@ export default function Contents() {
     .map((key) => selectedTopics[key])
     .flat();
 
-  const isAllSelected = selected.length === topicContents.length;
+  const allSelected = selected.length === topicContents.length;
+  const notSelected = selected.length === 0;
 
   const handleConfirm = () => {
     if (!selected.length) return;
@@ -48,11 +50,11 @@ export default function Contents() {
       <div className={styles.grid}>
         <SelectionCard
           title="전체 선택"
-          isSelected={isAllSelected}
+          isSelected={allSelected}
           onClick={() =>
-            toggleSelectAll(isAllSelected, setSelected, topicContents)
+            toggleSelectAll(allSelected, setSelected, topicContents)
           }
-          className={cardClass(isAllSelected)}
+          className={cardClass(allSelected)}
         />
         {topicContents.map((item) => {
           const isSelected = selected.includes(item);
@@ -69,12 +71,12 @@ export default function Contents() {
         })}
       </div>
       <Button
-        backgroundColor="var(--color-background-light)"
+        backgroundColor={theme.colors.background}
         width={100}
         height={50}
-        className={buttonClass(selected.length === 0)}
+        className={buttonClass(notSelected)}
         onClick={handleConfirm}
-        disabled={selected.length === 0}
+        disabled={notSelected}
       >
         확인
       </Button>

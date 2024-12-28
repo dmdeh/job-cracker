@@ -12,6 +12,7 @@ import {
   toggleSelectAll,
   toggleSelectTopic,
 } from "@/app/utils/toggleSelection";
+import { theme } from "@/app/constants/theme";
 
 export default function Topics() {
   const searchParams = useSearchParams();
@@ -53,7 +54,7 @@ export default function Topics() {
         ))}
       </div>
       <Button
-        backgroundColor="var(--color-background-light)"
+        backgroundColor={theme.colors.background}
         width={100}
         height={50}
         className={buttonClass(selected.length === 0)}
