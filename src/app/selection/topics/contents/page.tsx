@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./contents.module.css";
 import { getTopic } from "@/app/utils/checkTopic";
-import { TOPIC_MAP, ContentsKey } from "@/app/constants/topics";
+import { TOPIC_MAP, TopicKey } from "@/app/constants/topics";
 import { useState } from "react";
 import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
 import clsx from "clsx";
@@ -19,17 +19,11 @@ export default function Contents() {
   const router = useRouter();
   const [selected, setSelected] = useState<string[]>([]);
 
-  const topic = getTopic(searchParams.get("topic"));
+  const topic = getTopic(searchParams.get("topic")) ?? "Frontend";
   const selectedTopics = TOPIC_MAP[topic];
 
-  const isContents = (value: string): value is ContentsKey =>
-    value in selectedTopics;
-
   const contents = searchParams.get("selected")?.split(",") || [];
-  const topicContents = contents
-    .filter(isContents)
-    .map((key) => selectedTopics[key])
-    .flat();
+  const topicContents = getTopicContents(selectedTopics, contents);
 
   const allSelected = selected.length === topicContents.length;
   const notSelected = selected.length === 0;
@@ -94,4 +88,12 @@ function buttonClass(disabled: boolean) {
   return clsx(styles.button, {
     [styles.buttonDisabled]: disabled,
   });
+}
+
+function getTopicContents(topics: (typeof TOPIC_MAP)[TopicKey], selectedContents: string[]) {
+  return Object.entries(topics)
+    .filter(([key]) => selectedContents.includes(key))
+    .reduce<string[]>((acc, [_, value]) => {
+      return [...acc, ...value];
+    }, []);
 }
