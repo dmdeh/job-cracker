@@ -22,7 +22,7 @@ export default function Topics() {
 
   const handleConfirm = () => {
     if (!selected.length) return;
-    router.push(`/selection/topics/contents?topic=${topic}&selected=${selected.join(",")}`);
+    router.push(`/selection/contents?topic=${topic}&selected=${selected.join(",")}`);
   };
 
   return (
