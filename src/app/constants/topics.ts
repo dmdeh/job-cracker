@@ -126,4 +126,4 @@ export const TOPIC_MAP = {
 
 export type TopicKey = keyof typeof TOPIC_MAP;
 
-export type ContentsKey = keyof (typeof TOPIC_MAP[TopicKey]);
+export type ContentsKey = (typeof TOPIC_MAP)[TopicKey];

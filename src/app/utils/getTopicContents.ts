@@ -1,13 +1,12 @@
-import { TOPIC_MAP, TopicKey } from "@/app/constants/topics";
+import { ContentsKey } from "@/app/constants/topics";
 
-function getTopicContents(
-  topics: (typeof TOPIC_MAP)[TopicKey],
-  selectedContents: string[]
-) {
-  return Object.entries(topics)
-    .filter(([key]) => selectedContents.includes(key))
-    .reduce<string[]>((acc, [_, value]) => {
-      return [...acc, ...value];
-    }, []);
+function getTopicContents(topics: ContentsKey, selectedContents: string[]) {
+  return Object.entries(topics).reduce<string[]>((acc, [key, value]) => {
+    if (selectedContents.includes(key)) {
+      return acc.concat(value);
+    }
+    return acc;
+  }, []);
 }
+
 export default getTopicContents;
