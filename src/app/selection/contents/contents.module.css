@@ -16,8 +16,10 @@
 
 .grid {
   width: 100vh;
+  height: 500px;
   display: grid;
   gap: 1.5rem;
+  overflow-y: scroll;
 }
 
 .card {

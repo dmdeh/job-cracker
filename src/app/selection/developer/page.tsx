@@ -1,5 +1,3 @@
-"use client";
-
 import developers from "@/app/constants/developer";
 import styles from "./developer.module.css";
 import { DeveloperCard } from "@/app/components/DeveloperCard/DeveloperCard";

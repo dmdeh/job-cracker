@@ -1,51 +1,51 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import styles from "./topics.module.css";
-import Button from "@/app/components/common/Button/Button";
-import clsx from "clsx";
+import styles from "./contents.module.css";
 import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
+import clsx from "clsx";
+import Button from "@/app/components/common/Button/Button";
 import { theme } from "@/app/constants/theme";
 import useToggleSelection from "@/app/hooks/useToggleSelection";
 
-export default function Topics() {
+export default function Contents() {
   const router = useRouter();
   const {
-    topic,
-    allTopics,
+    topicContents,
     selected,
     allSelected,
     notSelected,
     toggleSelectAll,
     toggleSelectTopic,
-  } = useToggleSelection("topics");
+  } = useToggleSelection("contents");
 
   const handleConfirm = () => {
     if (!selected.length) return;
-    router.push(`/selection/contents?topic=${topic}&selected=${selected.join(",")}`);
+    router.push("/question");
   };
 
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <h1>어떤 주제로 {topic} 면접을 원하시나요?</h1>
+        <h1>주제를 선택해주세요! {selected.length} / {topicContents.length}</h1>
+        <p>당신을 위한 맞춤형 면접이 진행됩니다.</p>
       </div>
       <div className={styles.grid}>
         <SelectionCard
           title="전체 선택"
           isSelected={allSelected}
-          onClick={() => toggleSelectAll(allTopics)}
+          onClick={() => toggleSelectAll(topicContents)}
           className={cardClass(allSelected)}
         />
-        {allTopics.map((topic) => {
-          const isSelected = selected.includes(topic);
+        {topicContents.map((item) => {
+          const isSelected = selected.includes(item);
 
           return (
             <SelectionCard
-              key={topic}
-              title={topic}
+              key={item}
+              title={item}
               isSelected={isSelected}
-              onClick={() => toggleSelectTopic(topic)}
+              onClick={() => toggleSelectTopic(item)}
               className={cardClass(isSelected)}
             />
           );
@@ -76,3 +76,5 @@ function buttonClass(disabled: boolean) {
     [styles.buttonDisabled]: disabled,
   });
 }
+
+
