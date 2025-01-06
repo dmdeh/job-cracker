@@ -8,12 +8,14 @@
 }
 
 .header {
-  width: 100vh;
+  max-width: 860px;
+  width: 100%;
   color: var(--color-blue100);
 }
 
 .grid {
-  width: 100vh;
+  max-width: 860px;
+  width: 100%;
   display: grid;
   gap: 1.5rem;
 }
