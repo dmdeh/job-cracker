@@ -1,7 +1,17 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
 import QuestionCard from "../components/QuestionCard/QuestionCard";
 import styles from "./question.module.css";
+import useToggleSelection from "../hooks/useToggleSelection";
 
 export default function Question() {
+  const searchParams = useSearchParams();
+
+  const contents = searchParams.get("contents");
+  const { topicContents } = useToggleSelection("contents");
+  const questionList = contents === "all" ? topicContents : contents?.split(",");
+
   return (
     <div className={styles.page}>
       <div className={styles.header}>
