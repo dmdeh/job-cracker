@@ -1,0 +1,45 @@
+.card {
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: var(--color-background-light);
+  background-color: white;
+  box-shadow: 5px 5px 4px var(--color-gray100);
+}
+
+.topic {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--color-blue100);
+}
+
+.questionWrapper {
+  background-color: var(--color-skyblue100);
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 10px;
+  border: 2px solid var(--color-skyblue);
+  box-shadow: inset 8px 0 0 var(--color-skyblue200);
+}
+
+.question {
+  font-size: 18px;
+}
+
+.button {
+  float: right;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+}
+
+.blueButton {
+  background-color: var(--color-blue100);
+}
+
+.orangeButton {
+  background-color: var(--color-orange);
+}

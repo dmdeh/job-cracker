@@ -1,7 +1,9 @@
 :root {
   --color-background: #fefbf3;
   --color-background-light: #fffefb;
-  --color-blue100: #2b4c7e;
+  --color-skyblue100: #f8f9ff;
+  --color-skyblue200: #e5eeff;
+  --color-blue100: #3b4b81;
   --color-blue200: #1f364d;
   --color-orange: #ff6b35;
   --color-yellow: #fecf75;
