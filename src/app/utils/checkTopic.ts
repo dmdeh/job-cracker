@@ -1,11 +1,11 @@
-import { TOPIC_MAP, TopicKey } from "../constants/topics";
+import { TOPIC_MAP, DeveloperKey } from "../constants/topics";
 
-export function isTopic(value: string | null): value is TopicKey {
+function isDeveloper(value: string | null): value is DeveloperKey {
   return value !== null && Object.keys(TOPIC_MAP).includes(value);
 }
 
-export function getTopic(value: string | null): TopicKey | null {
-  if (isTopic(value)) {
+export function getDeveloper(value: string | null): DeveloperKey | null {
+  if (isDeveloper(value)) {
     return value;
   }
   return null;

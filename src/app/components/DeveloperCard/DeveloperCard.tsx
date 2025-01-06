@@ -12,10 +12,10 @@ export function DeveloperCard({
   description,
   topics,
 }: DeveloperCardProps) {
-  const [topic] = title.split(" ");
+  const [developer] = title.split(" ");
 
   return (
-    <Link href={`/selection/topics?topic=${topic}`} className={styles.card}>
+    <Link href={`/selection/topics?developer=${developer}`} className={styles.card}>
       <div>
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>

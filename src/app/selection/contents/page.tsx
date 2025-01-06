@@ -11,23 +11,28 @@ import useToggleSelection from "@/app/hooks/useToggleSelection";
 export default function Contents() {
   const router = useRouter();
   const {
+    topics,
     topicContents,
     selected,
     allSelected,
     notSelected,
     toggleSelectAll,
-    toggleSelectTopic,
+    toggleSelectItem,
   } = useToggleSelection("contents");
 
   const handleConfirm = () => {
     if (!selected.length) return;
-    router.push("/question");
+
+    const contents = allSelected ? "all" : selected.join(",");
+    router.push(`/question?topics=${topics}&contents=${contents}`);
   };
 
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <h1>주제를 선택해주세요! {selected.length} / {topicContents.length}</h1>
+        <h1>
+          주제를 선택해주세요! {selected.length} / {topicContents.length}
+        </h1>
         <p>당신을 위한 맞춤형 면접이 진행됩니다.</p>
       </div>
       <div className={styles.grid}>
@@ -45,7 +50,7 @@ export default function Contents() {
               key={item}
               title={item}
               isSelected={isSelected}
-              onClick={() => toggleSelectTopic(item)}
+              onClick={() => toggleSelectItem(item)}
               className={cardClass(isSelected)}
             />
           );
@@ -76,5 +81,3 @@ function buttonClass(disabled: boolean) {
     [styles.buttonDisabled]: disabled,
   });
 }
-
-

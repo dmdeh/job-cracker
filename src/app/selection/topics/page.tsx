@@ -11,24 +11,26 @@ import useToggleSelection from "@/app/hooks/useToggleSelection";
 export default function Topics() {
   const router = useRouter();
   const {
-    topic,
+    developer,
     allTopics,
     selected,
     allSelected,
     notSelected,
     toggleSelectAll,
-    toggleSelectTopic,
+    toggleSelectItem,
   } = useToggleSelection("topics");
 
   const handleConfirm = () => {
     if (!selected.length) return;
-    router.push(`/selection/contents?topic=${topic}&selected=${selected.join(",")}`);
+    router.push(
+      `/selection/contents?developer=${developer}&topics=${selected.join(",")}`
+    );
   };
 
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <h1>어떤 주제로 {topic} 면접을 원하시나요?</h1>
+        <h1>어떤 주제로 {developer} 면접을 원하시나요?</h1>
       </div>
       <div className={styles.grid}>
         <SelectionCard
@@ -45,7 +47,7 @@ export default function Topics() {
               key={topic}
               title={topic}
               isSelected={isSelected}
-              onClick={() => toggleSelectTopic(topic)}
+              onClick={() => toggleSelectItem(topic)}
               className={cardClass(isSelected)}
             />
           );

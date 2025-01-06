@@ -1,6 +1,6 @@
-import { ContentsKey } from "@/app/constants/topics";
+import { TopicKey } from "@/app/constants/topics";
 
-function getTopicContents(topics: ContentsKey, selectedContents: string[]) {
+function getTopicContents(topics: TopicKey, selectedContents: string[]) {
   return Object.entries(topics).reduce<string[]>((acc, [key, value]) => {
     if (selectedContents.includes(key)) {
       return acc.concat(value);

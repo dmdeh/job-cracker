@@ -124,6 +124,6 @@ export const TOPIC_MAP = {
   iOS: TOPICS_IOS,
 };
 
-export type TopicKey = keyof typeof TOPIC_MAP;
+export type DeveloperKey = keyof typeof TOPIC_MAP;
 
-export type ContentsKey = (typeof TOPIC_MAP)[TopicKey];
+export type TopicKey = (typeof TOPIC_MAP)[DeveloperKey];
