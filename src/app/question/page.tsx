@@ -6,7 +6,7 @@ import styles from "./question.module.css";
 import useToggleSelection from "../hooks/useToggleSelection";
 import { useQuestion } from "../hooks/useQuestion";
 import shuffleArray from "../utils/shuffleArray";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 export default function Question() {
   const searchParams = useSearchParams();
@@ -14,8 +14,13 @@ export default function Question() {
 
   const contents = searchParams.get("contents");
   const { topicContents } = useToggleSelection("contents");
-  const questionList = contents === "all" ? topicContents : contents?.split(",");
-  const shuffleQuestion = shuffleArray(questionList || []);
+  const questionList =
+    contents === "all" ? topicContents : contents?.split(",");
+
+  const shuffleQuestion = useMemo(
+    () => shuffleArray(questionList || []),
+    [questionList]
+  );
 
   const {
     isLoading,
@@ -23,10 +28,10 @@ export default function Question() {
     getTailQuestion,
     getNextQuestion,
     hasMoreQuestions,
+    currentIndex,
   } = useQuestion(shuffleQuestion);
 
   const getQuestionMessage = () => {
-    if (isLoading) return "질문을 생성하고 있습니다...";
     if (!hasMoreQuestions) return "질문이 끝났습니다. 수고하셨습니다.";
     return question || "질문을 불러오지 못했습니다.";
   };
@@ -45,9 +50,10 @@ export default function Question() {
       </div>
       <div className={styles.grid}>
         <QuestionCard
-          topic="React"
+          topic={shuffleQuestion[currentIndex]}
           question={getQuestionMessage()}
           onNextTopic={getNextQuestion}
+          isLoading={isLoading}
         />
       </div>
       <div className={styles.inputWrapper}>
