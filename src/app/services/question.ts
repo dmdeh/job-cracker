@@ -4,7 +4,7 @@ interface QuestionResponse {
   error?: string;
 }
 
-export async function fetchRandomQuestion(
+export async function fetchQuestion(
   keyword: string,
   answer?: string
 ): Promise<QuestionResponse> {

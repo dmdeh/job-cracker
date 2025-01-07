@@ -1,23 +1,19 @@
 import { useState, useEffect } from "react";
-import { fetchRandomQuestion } from "../services/question";
+import { fetchQuestion } from "../services/question";
 
 export function useQuestion(keywords: string[]) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [question, setQuestion] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFinished, setIsFinished] = useState(false);
+
+  const hasMoreQuestions = currentIndex < keywords.length;
 
   const generateQuestion = async (index: number, answer?: string) => {
-    if (index >= keywords.length) {
-      setIsFinished(true);
-      return;
-    }
-
     setIsLoading(true);
     setError("");
 
-    const response = await fetchRandomQuestion(keywords[index], answer);
+    const response = await fetchQuestion(keywords[index], answer);
 
     if (!response.success) {
       setError(response.error || "Failed to generate question");
@@ -28,22 +24,30 @@ export function useQuestion(keywords: string[]) {
     setIsLoading(false);
   };
 
-  const getNextQuestion = (answer?: string) => {
-    const nextIndex = currentIndex + 1;
+  const getTailQuestion = (answer?: string) => {
+    if (!hasMoreQuestions) return;
+    generateQuestion(currentIndex, answer);
+  };
 
-    if (nextIndex >= keywords.length) {
-      setIsFinished(true);
-    } else {
-      setCurrentIndex(nextIndex);
-      generateQuestion(nextIndex, answer);
+  const getNextQuestion = () => {
+    if (hasMoreQuestions) {
+      setCurrentIndex((prevIndex) => prevIndex + 1);
     }
   };
 
   useEffect(() => {
-    if (!isFinished) {
+    if (hasMoreQuestions) {
       generateQuestion(currentIndex);
     }
-  }, [currentIndex, isFinished]);
+  }, [currentIndex]);
 
-  return { isLoading, error, question, getNextQuestion, isFinished };
+  return {
+    isLoading,
+    error,
+    question,
+    getTailQuestion,
+    getNextQuestion,
+    hasMoreQuestions,
+    currentIndex,
+  };
 }

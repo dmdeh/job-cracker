@@ -14,25 +14,26 @@ export default function Question() {
 
   const contents = searchParams.get("contents");
   const { topicContents } = useToggleSelection("contents");
-  const questionList =
-    contents === "all" ? topicContents : contents?.split(",");
+  const questionList = contents === "all" ? topicContents : contents?.split(",");
   const shuffleQuestion = shuffleArray(questionList || []);
 
-  const { isLoading, question, getNextQuestion, isFinished } =
-    useQuestion(shuffleQuestion);
+  const {
+    isLoading,
+    question,
+    getTailQuestion,
+    getNextQuestion,
+    hasMoreQuestions,
+  } = useQuestion(shuffleQuestion);
 
   const getQuestionMessage = () => {
-    if (isLoading) {
-      return "질문을 생성하고 있습니다...";
-    } else if (isFinished) {
-      return "질문이 끝났습니다. 수고하셨습니다.";
-    } else {
-      return question || "질문을 불러오지 못했습니다.";
-    }
+    if (isLoading) return "질문을 생성하고 있습니다...";
+    if (!hasMoreQuestions) return "질문이 끝났습니다. 수고하셨습니다.";
+    return question || "질문을 불러오지 못했습니다.";
   };
 
   const handleSubmit = () => {
-    getNextQuestion(answer);
+    if (!answer.trim()) return;
+    getTailQuestion(answer);
     setAnswer("");
   };
 
