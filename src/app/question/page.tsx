@@ -6,9 +6,11 @@ import styles from "./question.module.css";
 import useToggleSelection from "../hooks/useToggleSelection";
 import { useQuestion } from "../hooks/useQuestion";
 import shuffleArray from "../utils/shuffleArray";
+import { useState } from "react";
 
 export default function Question() {
   const searchParams = useSearchParams();
+  const [answer, setAnswer] = useState("");
 
   const contents = searchParams.get("contents");
   const { topicContents } = useToggleSelection("contents");
@@ -29,6 +31,11 @@ export default function Question() {
     }
   };
 
+  const handleSubmit = () => {
+    getNextQuestion(answer);
+    setAnswer("");
+  };
+
   return (
     <div className={styles.page}>
       <div className={styles.header}>
@@ -47,8 +54,12 @@ export default function Question() {
           id="answer"
           placeholder="답변을 입력해주세요..."
           className={styles.input}
+          value={answer}
+          onChange={(e) => setAnswer(e.target.value)}
         />
-        <button className={styles.button}>⬆︎</button>
+        <button className={styles.button} onClick={handleSubmit}>
+          ⬆︎
+        </button>
       </div>
     </div>
   );

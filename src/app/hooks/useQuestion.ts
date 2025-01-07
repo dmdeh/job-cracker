@@ -8,7 +8,7 @@ export function useQuestion(keywords: string[]) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
 
-  const generateQuestion = async (index: number) => {
+  const generateQuestion = async (index: number, answer?: string) => {
     if (index >= keywords.length) {
       setIsFinished(true);
       return;
@@ -17,7 +17,7 @@ export function useQuestion(keywords: string[]) {
     setIsLoading(true);
     setError("");
 
-    const response = await fetchRandomQuestion(keywords[index]);
+    const response = await fetchRandomQuestion(keywords[index], answer);
 
     if (!response.success) {
       setError(response.error || "Failed to generate question");
@@ -28,14 +28,14 @@ export function useQuestion(keywords: string[]) {
     setIsLoading(false);
   };
 
-  const getNextQuestion = () => {
+  const getNextQuestion = (answer?: string) => {
     const nextIndex = currentIndex + 1;
 
     if (nextIndex >= keywords.length) {
       setIsFinished(true);
     } else {
       setCurrentIndex(nextIndex);
-      generateQuestion(nextIndex);
+      generateQuestion(nextIndex, answer);
     }
   };
 
