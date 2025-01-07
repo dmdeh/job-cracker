@@ -5,11 +5,9 @@ interface QuestionResponse {
 }
 
 export async function fetchRandomQuestion(
-  questionList: string[]
+  keyword: string
 ): Promise<QuestionResponse> {
   try {
-    const keyword = questionList[Math.floor(Math.random() * questionList.length)];
-
     const response = await fetch("/api/question", {
       method: "POST",
       headers: {
@@ -17,7 +15,6 @@ export async function fetchRandomQuestion(
       },
       body: JSON.stringify({
         keyword: keyword,
-        questionList: questionList,
       }),
     });
 

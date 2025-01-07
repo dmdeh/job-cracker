@@ -5,12 +5,19 @@ export function useQuestion(keywords: string[]) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [question, setQuestion] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
 
-  const generateQuestion = async () => {
+  const generateQuestion = async (index: number) => {
+    if (index >= keywords.length) {
+      setIsFinished(true);
+      return;
+    }
+
     setIsLoading(true);
     setError("");
 
-    const response = await fetchRandomQuestion(keywords);
+    const response = await fetchRandomQuestion(keywords[index]);
 
     if (!response.success) {
       setError(response.error || "Failed to generate question");
@@ -21,9 +28,22 @@ export function useQuestion(keywords: string[]) {
     setIsLoading(false);
   };
 
-  useEffect(() => {
-    generateQuestion();
-  }, []);
+  const getNextQuestion = () => {
+    const nextIndex = currentIndex + 1;
 
-  return { isLoading, error, question, generateQuestion };
+    if (nextIndex >= keywords.length) {
+      setIsFinished(true);
+    } else {
+      setCurrentIndex(nextIndex);
+      generateQuestion(nextIndex);
+    }
+  };
+
+  useEffect(() => {
+    if (!isFinished) {
+      generateQuestion(currentIndex);
+    }
+  }, [currentIndex, isFinished]);
+
+  return { isLoading, error, question, getNextQuestion, isFinished };
 }
