@@ -17,10 +17,7 @@ export default function Question() {
   const questionList =
     contents === "all" ? topicContents : contents?.split(",");
 
-  const shuffleQuestion = useMemo(
-    () => shuffleArray(questionList || []),
-    [questionList]
-  );
+  const shuffleQuestion = useMemo(() => shuffleArray(questionList || []), []);
 
   const {
     isLoading,
@@ -40,6 +37,12 @@ export default function Question() {
     if (!answer.trim()) return;
     getTailQuestion(answer);
     setAnswer("");
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
   };
 
   return (
@@ -63,6 +66,7 @@ export default function Question() {
           className={styles.input}
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <button className={styles.button} onClick={handleSubmit}>
           ⬆︎
