@@ -1,29 +1,24 @@
+import clsx from "clsx";
 import SpinCracker from "../common/Loading/SpinCracker";
 import styles from "./QuestionCard.module.css";
 
 interface QuestionCardProps {
   topic: string;
   question: string;
-  isAnswerView?: boolean;
   onNextTopic: () => void;
+  // onViewAnswer: () => void;
   isLoading: boolean;
 }
 
 export default function QuestionCard({
   topic,
   question,
-  isAnswerView = false,
   onNextTopic,
+  // onViewAnswer,
   isLoading,
 }: QuestionCardProps) {
-  const handleButtonClick = () => {
-    if (isAnswerView) {
-      onNextTopic();
-      // onViewAnswer();
-    } else {
-      onNextTopic();
-    }
-  };
+  // const handleViewAnswer = () => onViewAnswer();
+  const handleNextTopic = () => onNextTopic();
 
   return (
     <div className={styles.card}>
@@ -35,14 +30,20 @@ export default function QuestionCard({
           <div className={styles.questionWrapper}>
             <div className={styles.question}>Q. {question}</div>
           </div>
-          <button
-            className={`${styles.button} ${
-              isAnswerView ? styles.blueButton : styles.orangeButton
-            }`}
-            onClick={handleButtonClick}
-          >
-            {isAnswerView ? "답변 보기" : "다른 주제"}
-          </button>
+          <div className={styles.buttonWrapper}>
+            <button
+              className={clsx(styles.button, styles.blueButton)}
+              onClick={handleNextTopic}
+            >
+              답변 보기
+            </button>
+            <button
+              className={clsx(styles.button, styles.orangeButton)}
+              onClick={handleNextTopic}
+            >
+              다른 주제
+            </button>
+          </div>
         </>
       )}
     </div>

@@ -50,7 +50,7 @@ export default function Question() {
       </div>
       <div className={styles.grid}>
         <QuestionCard
-          topic={shuffleQuestion[currentIndex]}
+          topic={shuffleQuestion[currentIndex] || "면접 종료"}
           question={getQuestionMessage()}
           onNextTopic={getNextQuestion}
           isLoading={isLoading}

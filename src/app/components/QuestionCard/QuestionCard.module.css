@@ -7,6 +7,7 @@
   background-color: white;
   box-shadow: 5px 5px 4px var(--color-gray100);
   min-height: 200px;
+  align-content: center;
 }
 
 .topic {
@@ -28,8 +29,11 @@
   font-size: 18px;
 }
 
-.button {
+.buttonWrapper {
   float: right;
+}
+
+.button {
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
@@ -43,5 +47,6 @@
 }
 
 .orangeButton {
+  margin-left: 10px;
   background-color: var(--color-orange);
 }
