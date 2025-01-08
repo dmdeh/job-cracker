@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import styles from "./topics.module.css";
+import layoutStyles from "@/app/styles/layout.module.css";
 import Button from "@/app/components/common/Button/Button";
 import clsx from "clsx";
 import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
@@ -28,11 +29,11 @@ export default function Topics() {
   };
 
   return (
-    <div className={styles.page}>
-      <div className={styles.header}>
+    <div className={layoutStyles.page}>
+      <header className={layoutStyles.header}>
         <h1>어떤 주제로 {developer} 면접을 원하시나요?</h1>
-      </div>
-      <div className={styles.grid}>
+      </header>
+      <main className={clsx(layoutStyles.list, styles.list)}>
         <SelectionCard
           title="전체 선택"
           isSelected={allSelected}
@@ -52,17 +53,19 @@ export default function Topics() {
             />
           );
         })}
-      </div>
-      <Button
-        backgroundColor={theme.colors.background}
-        width={100}
-        height={50}
-        className={buttonClass(notSelected)}
-        onClick={handleConfirm}
-        disabled={notSelected}
-      >
-        확인
-      </Button>
+      </main>
+      <footer className={layoutStyles.footer}>
+        <Button
+          backgroundColor={theme.colors.backgroundLight}
+          width={100}
+          height={50}
+          className={buttonClass(notSelected)}
+          onClick={handleConfirm}
+          disabled={notSelected}
+        >
+          확인
+        </Button>
+      </footer>
     </div>
   );
 }

@@ -1,0 +1,37 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.header {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--color-blue300);
+  padding: 0 16px;
+  margin-bottom: 20px;
+}
+
+.list {
+  max-height: 500px;
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 16px;
+}
+
+.footer {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  padding: 0 16px;
+}

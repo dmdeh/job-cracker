@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import QuestionCard from "../components/QuestionCard/QuestionCard";
 import styles from "./question.module.css";
+import layoutStyles from "@/app/styles/layout.module.css";
 import useToggleSelection from "../hooks/useToggleSelection";
 import { useQuestion } from "../hooks/useQuestion";
 import shuffleArray from "../utils/shuffleArray";
@@ -57,32 +58,34 @@ export default function Question() {
   };
 
   return (
-    <div className={styles.page}>
-      <div className={styles.header}>
+    <div className={layoutStyles.page}>
+      <header className={layoutStyles.header}>
         <h1>개발자 기술 면접</h1>
         <p>면접관의 질문에 답변해주세요</p>
-      </div>
-      <div className={styles.grid}>
+      </header>
+      <main className={styles.question}>
         <QuestionCard
           topic={shuffleQuestion[currentIndex] || "면접 종료"}
           question={getQuestionMessage()}
           onNextTopic={getNextQuestion}
           isLoading={isLoading}
         />
-      </div>
-      <div className={styles.inputWrapper}>
-        <textarea
-          id="answer"
-          placeholder="답변을 입력해주세요..."
-          className={styles.input}
-          ref={textareaRef}
-          onChange={handleAnswerUpdate}
-          onKeyDown={handleKeyDown}
-        />
-        <button className={styles.button} onClick={handleAnswerSubmit}>
-          ⬆︎
-        </button>
-      </div>
+      </main>
+      <footer className={styles.footer}>
+        <div className={styles.inputWrapper}>
+          <textarea
+            id="answer"
+            placeholder="답변을 입력해주세요..."
+            className={styles.input}
+            ref={textareaRef}
+            onChange={handleAnswerUpdate}
+            onKeyDown={handleKeyDown}
+          />
+          <button className={styles.button} onClick={handleAnswerSubmit}>
+            ⬆︎
+          </button>
+        </div>
+      </footer>
     </div>
   );
 }
