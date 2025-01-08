@@ -15,11 +15,11 @@
 
 .title {
   font-weight: 600;
-  color: var(--color-blue100);
+  color: var(--color-blue300);
 }
 
 .description {
-  color: var(--color-blue200);
+  color: var(--color-blue400);
 }
 
 .tagContainer {

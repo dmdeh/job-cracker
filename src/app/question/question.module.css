@@ -11,7 +11,7 @@
 .header {
   width: 100%;
   max-width: 860px;
-  color: var(--color-blue100);
+  color: var(--color-blue300);
 }
 
 .grid {
@@ -35,17 +35,18 @@
 .input {
   background-color: unset;
   border: none;
-  overflow-y: scroll;
+  overflow: auto;
   font-size: 18px;
   flex: 1;
   margin: 5px;
+  padding: 5px;
   resize: none;
 }
 
 .button {
   padding: 10px;
   background-color: unset;
-  color: var(--color-blue100);
+  color: var(--color-blue300);
   font-size: 30px;
   border: unset;
 }
