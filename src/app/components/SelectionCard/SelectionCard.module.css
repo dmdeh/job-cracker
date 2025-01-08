@@ -1,6 +1,6 @@
 .card {
   padding: 25px;
-  border-radius: 0.5rem;
+  border-radius: 10px;
   box-shadow: 5px 5px 4px var(--color-gray100);
   cursor: pointer;
   transition: all 0.2s ease-in-out;

@@ -2,34 +2,35 @@
   position: relative;
   border-radius: 20px;
   padding: 20px;
-  margin-bottom: 20px;
-  background-color: var(--color-background-light);
   background-color: white;
   box-shadow: 5px 5px 4px var(--color-gray100);
-  min-height: 200px;
-  align-content: center;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .topic {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
   color: var(--color-blue300);
 }
 
 .questionWrapper {
   background-color: var(--color-blue100);
-  padding: 15px;
-  margin: 15px 0;
+  padding: 25px 10px 25px 20px;
+margin: 20px 0;
   border-radius: 10px;
-  box-shadow: inset 8px 0 0 var(--color-blue200);
+  box-shadow: inset 10px 0 0 var(--color-blue200);
 }
 
 .question {
   font-size: 18px;
+  line-height: 30px;
 }
 
 .buttonWrapper {
-  float: right;
+  text-align: end;
 }
 
 .button {

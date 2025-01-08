@@ -6,7 +6,6 @@ interface QuestionCardProps {
   topic: string;
   question: string;
   onNextTopic: () => void;
-  // onViewAnswer: () => void;
   isLoading: boolean;
 }
 
@@ -14,10 +13,8 @@ export default function QuestionCard({
   topic,
   question,
   onNextTopic,
-  // onViewAnswer,
   isLoading,
 }: QuestionCardProps) {
-  // const handleViewAnswer = () => onViewAnswer();
   const handleNextTopic = () => onNextTopic();
 
   return (

@@ -6,7 +6,10 @@ export default function Home() {
   return (
     <main className={styles.page}>
       <div className={styles.titleWrapper}>
-        <h1 className={styles.title}>JOB Cracker</h1>
+        <h1 className={styles.title}>
+          <span className={styles.mobileTitle}>JOB </span>
+          <span className={styles.mobileTitle}>Cracker</span>
+        </h1>
       </div>
       <Image
         src="/cracker.png"
