@@ -9,11 +9,11 @@ export function useQuestion(keywords: string[]) {
 
   const hasMoreQuestions = currentIndex < keywords.length;
 
-  const generateQuestion = async (index: number, answer?: string) => {
+  const generateQuestion = async (answer?: string) => {
     setIsLoading(true);
     setError("");
 
-    const response = await fetchQuestion(keywords[index], answer);
+    const response = await fetchQuestion(keywords[currentIndex], answer);
 
     if (!response.success) {
       setError(response.error || "Failed to generate question");
@@ -26,7 +26,7 @@ export function useQuestion(keywords: string[]) {
 
   const getTailQuestion = (answer?: string) => {
     if (!hasMoreQuestions) return;
-    generateQuestion(currentIndex, answer);
+    generateQuestion(answer);
   };
 
   const getNextQuestion = () => {
@@ -37,7 +37,7 @@ export function useQuestion(keywords: string[]) {
 
   useEffect(() => {
     if (hasMoreQuestions) {
-      generateQuestion(currentIndex);
+      generateQuestion();
     }
   }, [currentIndex]);
 
