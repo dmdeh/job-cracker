@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchQuestion } from "../services/question";
+import { fetchQuestion } from "../services/fetchQuestion";
 
 export function useQuestion(keywords: string[]) {
   const [isLoading, setIsLoading] = useState(true);
