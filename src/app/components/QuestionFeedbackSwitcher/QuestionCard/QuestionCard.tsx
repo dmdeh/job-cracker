@@ -5,9 +5,10 @@ import styles from "./QuestionCard.module.css";
 interface QuestionCardProps {
   topic: string;
   question: string;
-  onNextTopic: () => void;
   isLoading: boolean;
+  onNextTopic: () => void;
   onViewFeedback: () => void;
+  viewFeedbackDisabled: boolean;
 }
 
 export default function QuestionCard({
@@ -16,6 +17,7 @@ export default function QuestionCard({
   onNextTopic,
   isLoading,
   onViewFeedback,
+  viewFeedbackDisabled,
 }: QuestionCardProps) {
   const handleNextTopic = () => onNextTopic();
 
@@ -33,6 +35,7 @@ export default function QuestionCard({
             <button
               className={clsx(styles.button, styles.blueButton)}
               onClick={onViewFeedback}
+              disabled={viewFeedbackDisabled}
             >
               답변 보기
             </button>
