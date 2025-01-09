@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchQuestion } from "../services/fetchQuestion";
-import { Feedback } from "../components/FeedbackCard/FeedbackCard";
+import { Feedback } from "../components/QuestionFeedbackSwitcher/FeedbackCard/FeedbackCard";
 
 export function useQuestion(keywords: string[]) {
   const [isLoading, setIsLoading] = useState(true);

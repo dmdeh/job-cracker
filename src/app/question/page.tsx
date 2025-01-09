@@ -1,13 +1,13 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import QuestionCard from "../components/QuestionCard/QuestionCard";
 import styles from "./question.module.css";
 import layoutStyles from "@/app/styles/layout.module.css";
 import useToggleSelection from "../hooks/useToggleSelection";
 import { useQuestion } from "../hooks/useQuestion";
 import shuffleArray from "../utils/shuffleArray";
 import { useMemo, useRef } from "react";
+import QuestionFeedbackSwitcher from "../components/QuestionFeedbackSwitcher/QuestionFeedbackSwitcher";
 
 export default function Question() {
   const searchParams = useSearchParams();
@@ -24,11 +24,13 @@ export default function Question() {
   const {
     isLoading,
     question,
+    feedback,
     getTailQuestion,
     getNextQuestion,
     hasMoreQuestions,
     currentIndex,
   } = useQuestion(shuffleQuestion);
+  console.log("🚀 ~ Question ~ feedback:", feedback);
 
   const getQuestionMessage = () => {
     if (!hasMoreQuestions) return "질문이 끝났습니다. 수고하셨습니다.";
@@ -64,10 +66,11 @@ export default function Question() {
         <p>면접관의 질문에 답변해주세요</p>
       </header>
       <main className={styles.question}>
-        <QuestionCard
+        <QuestionFeedbackSwitcher
           topic={shuffleQuestion[currentIndex] || "면접 종료"}
           question={getQuestionMessage()}
           onNextTopic={getNextQuestion}
+          feedback={feedback}
           isLoading={isLoading}
         />
       </main>
