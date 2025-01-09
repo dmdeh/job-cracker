@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { fetchQuestion } from "../services/fetchQuestion";
+import { Feedback } from "../components/FeedbackCard/FeedbackCard";
 
 export function useQuestion(keywords: string[]) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [question, setQuestion] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [feedback, setFeedback] = useState({});
+
+  const initialFeedback: Feedback = { score: "", reason: "", bestAnswer: "" };
+  const [feedback, setFeedback] = useState(initialFeedback);
 
   const hasMoreQuestions = currentIndex < keywords.length;
 
@@ -29,7 +32,7 @@ export function useQuestion(keywords: string[]) {
       if (response.feedback) {
         setFeedback(response.feedback);
       } else {
-        setFeedback({});
+        setFeedback({ score: "", reason: "", bestAnswer: "" });
       }
 
       if (answer && !response.hasTailQuestion) {
@@ -49,7 +52,7 @@ export function useQuestion(keywords: string[]) {
   const getNextQuestion = () => {
     if (hasMoreQuestions) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
-      setFeedback({});
+      setFeedback(initialFeedback);
     }
   };
 
