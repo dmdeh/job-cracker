@@ -1,8 +1,4 @@
-interface Feedback {
-  score: string;
-  reason: string;
-  bestAnswer: string;
-}
+import { Feedback } from "../components/FeedbackCard/FeedbackCard";
 
 interface SuccessResponse {
   success: true;
