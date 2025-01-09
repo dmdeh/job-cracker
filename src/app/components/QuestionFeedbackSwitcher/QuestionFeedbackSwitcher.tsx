@@ -18,15 +18,18 @@ export default function QuestionFeedbackSwitcher({
   onNextTopic,
 }: QuestionFeedbackSwitcherProps) {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
+  const { score, reason, bestAnswer } = feedback;
 
   const handleViewFeedback = () => setIsFeedbackVisible(true);
   const handleViewQuestion = () => setIsFeedbackVisible(false);
 
   useEffect(() => {
-    if (feedback.score || feedback.reason || feedback.bestAnswer) {
+    if (score || reason || bestAnswer) {
       setIsFeedbackVisible(true);
     }
   }, [feedback]);
+
+  const viewFeedbackDisabled = !score || !reason || !bestAnswer;
 
   return (
     <div>
@@ -43,6 +46,7 @@ export default function QuestionFeedbackSwitcher({
           onViewFeedback={handleViewFeedback}
           onNextTopic={onNextTopic}
           isLoading={isLoading}
+          viewFeedbackDisabled={viewFeedbackDisabled} // 비활성화
         />
       )}
     </div>

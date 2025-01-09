@@ -46,6 +46,11 @@
   background-color: var(--color-blue300);
 }
 
+.blueButton:disabled {
+  background-color: var(--color-gray100);
+  cursor: not-allowed;
+}
+
 .orangeButton {
   margin-left: 10px;
   background-color: var(--color-orange);
