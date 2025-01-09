@@ -1,7 +1,14 @@
+interface Feedback {
+  score: string;
+  reason: string;
+  bestAnswer: string;
+}
+
 interface SuccessResponse {
   success: true;
   question: string;
   hasTailQuestion: boolean;
+  feedback: Feedback;
 }
 
 interface ErrorResponse {

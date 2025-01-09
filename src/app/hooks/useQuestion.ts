@@ -6,6 +6,7 @@ export function useQuestion(keywords: string[]) {
   const [error, setError] = useState("");
   const [question, setQuestion] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [feedback, setFeedback] = useState({});
 
   const hasMoreQuestions = currentIndex < keywords.length;
 
@@ -25,6 +26,12 @@ export function useQuestion(keywords: string[]) {
 
       setQuestion(response.question);
 
+      if (response.feedback) {
+        setFeedback(response.feedback);
+      } else {
+        setFeedback({});
+      }
+
       if (answer && !response.hasTailQuestion) {
         setCurrentIndex((prev) => prev + 1);
       }
@@ -42,6 +49,7 @@ export function useQuestion(keywords: string[]) {
   const getNextQuestion = () => {
     if (hasMoreQuestions) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
+      setFeedback({});
     }
   };
 
@@ -49,12 +57,13 @@ export function useQuestion(keywords: string[]) {
     if (hasMoreQuestions) {
       generateQuestion();
     }
-  }, [currentIndex]);
+  }, []);
 
   return {
     isLoading,
     error,
     question,
+    feedback,
     getTailQuestion,
     getNextQuestion,
     hasMoreQuestions,

@@ -11,13 +11,13 @@ export async function POST(request: Request) {
     const { keyword, answer } = await request.json();
 
     const userPrompt = answer
-      ? ANSWER_PROMPTS.content(keyword, answer)
-      : USER_PROMPTS.content(keyword);
+      ? ANSWER_PROMPTS(keyword, answer)
+      : USER_PROMPTS(keyword);
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
-        { role: "system", content: SYSTEM_PROMPTS.content },
+        { role: "system", content: SYSTEM_PROMPTS },
         { role: "user", content: userPrompt },
       ],
       temperature: 0.7,
@@ -28,6 +28,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       question: response.question,
+      feedback: response.feedback,
       hasTailQuestion: response.hasTailQuestion,
     });
   } catch (error: any) {
