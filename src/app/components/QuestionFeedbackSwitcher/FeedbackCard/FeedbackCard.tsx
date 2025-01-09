@@ -1,4 +1,4 @@
-import SpinCracker from "../common/Loading/SpinCracker";
+import SpinCracker from "../../common/Loading/SpinCracker";
 import styles from "./FeedbackCard.module.css";
 
 export interface Feedback {
@@ -10,11 +10,13 @@ export interface Feedback {
 interface FeedbackCardProps {
   feedback: Feedback;
   isLoading: boolean;
+  onViewQuestion: () => void;
 }
 
 export default function FeedbackCard({
   feedback,
   isLoading,
+  onViewQuestion,
 }: FeedbackCardProps) {
   const { score, reason, bestAnswer } = feedback;
 
@@ -32,7 +34,9 @@ export default function FeedbackCard({
             <div className={styles.text}>{bestAnswer}</div>
           </div>
           <div className={styles.buttonWrapper}>
-            <button className={styles.blueButton}>질문 보기</button>
+            <button className={styles.blueButton} onClick={onViewQuestion}>
+              질문 보기
+            </button>
           </div>
         </>
       )}

@@ -1,4 +1,4 @@
-import { Feedback } from "../components/FeedbackCard/FeedbackCard";
+import { Feedback } from "../components/QuestionFeedbackSwitcher/FeedbackCard/FeedbackCard";
 
 interface SuccessResponse {
   success: true;
