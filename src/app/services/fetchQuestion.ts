@@ -1,7 +1,9 @@
 interface SuccessResponse {
   success: true;
   question: string;
+  hasTailQuestion: boolean;
 }
+
 interface ErrorResponse {
   success: false;
   error: string;
@@ -50,10 +52,16 @@ function isValidResponse(responseInJSON: any) {
   if (responseInJSON == null || typeof responseInJSON !== "object") {
     return false;
   }
-  if (responseInJSON.success === true && typeof responseInJSON.question === "string") {
+  if (
+    responseInJSON.success === true &&
+    typeof responseInJSON.question === "string"
+  ) {
     return true;
   }
-  if (responseInJSON.success === false && typeof responseInJSON.error === "string") {
+  if (
+    responseInJSON.success === false &&
+    typeof responseInJSON.error === "string"
+  ) {
     return true;
   }
   return false;

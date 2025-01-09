@@ -10,22 +10,32 @@ export function useQuestion(keywords: string[]) {
   const hasMoreQuestions = currentIndex < keywords.length;
 
   const generateQuestion = async (answer?: string) => {
+    if (!hasMoreQuestions) return;
+
     setIsLoading(true);
     setError("");
 
-    const response = await fetchQuestion(keywords[currentIndex], answer);
+    try {
+      const response = await fetchQuestion(keywords[currentIndex], answer);
 
-    if (!response.success) {
-      setError(response.error || "Failed to generate question");
-    } else {
-      setQuestion(response.question || "");
+      if (!response.success) {
+        setError(response.error || "Failed to generate question");
+        return;
+      }
+
+      setQuestion(response.question);
+
+      if (answer && !response.hasTailQuestion) {
+        setCurrentIndex((prev) => prev + 1);
+      }
+    } catch (err) {
+      setError("Failed to generate question");
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   };
 
-  const getTailQuestion = (answer?: string) => {
-    if (!hasMoreQuestions) return;
+  const getTailQuestion = (answer: string) => {
     generateQuestion(answer);
   };
 

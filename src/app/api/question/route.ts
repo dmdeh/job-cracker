@@ -23,9 +23,12 @@ export async function POST(request: Request) {
       temperature: 0.7,
     });
 
+    const response = JSON.parse(completion.choices[0].message.content || "{}");
+
     return NextResponse.json({
       success: true,
-      question: completion.choices[0].message.content,
+      question: response.question,
+      hasTailQuestion: response.hasTailQuestion,
     });
   } catch (error: any) {
     console.error("OpenAI API Error:", error);
