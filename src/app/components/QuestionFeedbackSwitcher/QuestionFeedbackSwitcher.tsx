@@ -19,34 +19,30 @@ export default function QuestionFeedbackSwitcher({
 }: QuestionFeedbackSwitcherProps) {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
   const { score, reason, bestAnswer } = feedback;
-
-  const handleViewFeedback = () => setIsFeedbackVisible(true);
-  const handleViewQuestion = () => setIsFeedbackVisible(false);
+  const isFeedbackAvailable = score || reason || bestAnswer;
 
   useEffect(() => {
-    if (score || reason || bestAnswer) {
+    if (isFeedbackAvailable) {
       setIsFeedbackVisible(true);
     }
-  }, [feedback]);
-
-  const viewFeedbackDisabled = !score || !reason || !bestAnswer;
+  }, [isFeedbackAvailable]);
 
   return (
     <div>
       {isFeedbackVisible ? (
         <FeedbackCard
           feedback={feedback}
-          onViewQuestion={handleViewQuestion}
+          onViewQuestion={() => setIsFeedbackVisible(false)}
           isLoading={isLoading}
         />
       ) : (
         <QuestionCard
           topic={topic}
           question={question}
-          onViewFeedback={handleViewFeedback}
+          onViewFeedback={() => setIsFeedbackVisible(true)}
           onNextTopic={onNextTopic}
           isLoading={isLoading}
-          viewFeedbackDisabled={viewFeedbackDisabled} // 비활성화
+          viewFeedbackDisabled={!isFeedbackAvailable} // 비활성화
         />
       )}
     </div>
