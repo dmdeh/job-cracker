@@ -19,7 +19,7 @@ export default function Question() {
   const questionList =
     contents === "all" ? topicContents : contents?.split(",");
 
-  const shuffleQuestion = useMemo(() => shuffleArray(questionList || []), []);
+  const shuffleQuestion = shuffleArray(questionList || []);
 
   const {
     isLoading,
@@ -30,7 +30,6 @@ export default function Question() {
     hasMoreQuestions,
     currentIndex,
   } = useQuestion(shuffleQuestion);
-  console.log("🚀 ~ Question ~ feedback:", feedback);
 
   const getQuestionMessage = () => {
     if (!hasMoreQuestions) return "질문이 끝났습니다. 수고하셨습니다.";
