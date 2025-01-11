@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import styles from "./contents.module.css";
+import layoutStyles from "@/app/styles/layout.module.css";
 import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
 import clsx from "clsx";
 import Button from "@/app/components/common/Button/Button";
@@ -11,26 +12,31 @@ import useToggleSelection from "@/app/hooks/useToggleSelection";
 export default function Contents() {
   const router = useRouter();
   const {
+    topics,
     topicContents,
     selected,
     allSelected,
     notSelected,
     toggleSelectAll,
-    toggleSelectTopic,
+    toggleSelectItem,
   } = useToggleSelection("contents");
 
   const handleConfirm = () => {
     if (!selected.length) return;
-    router.push("/question");
+
+    const contents = allSelected ? "all" : selected.join(",");
+    router.push(`/question?topics=${topics}&contents=${contents}`);
   };
 
   return (
-    <div className={styles.page}>
-      <div className={styles.header}>
-        <h1>주제를 선택해주세요! {selected.length} / {topicContents.length}</h1>
+    <div className={layoutStyles.page}>
+      <header className={layoutStyles.header}>
+        <h1>
+          주제를 선택해주세요! {selected.length} / {topicContents.length}
+        </h1>
         <p>당신을 위한 맞춤형 면접이 진행됩니다.</p>
-      </div>
-      <div className={styles.grid}>
+      </header>
+      <main className={clsx(layoutStyles.list, styles.list)}>
         <SelectionCard
           title="전체 선택"
           isSelected={allSelected}
@@ -45,22 +51,24 @@ export default function Contents() {
               key={item}
               title={item}
               isSelected={isSelected}
-              onClick={() => toggleSelectTopic(item)}
+              onClick={() => toggleSelectItem(item)}
               className={cardClass(isSelected)}
             />
           );
         })}
-      </div>
-      <Button
-        backgroundColor={theme.colors.background}
-        width={100}
-        height={50}
-        className={buttonClass(notSelected)}
-        onClick={handleConfirm}
-        disabled={notSelected}
-      >
-        확인
-      </Button>
+      </main>
+      <footer className={layoutStyles.footer}>
+        <Button
+          backgroundColor={theme.colors.backgroundLight}
+          width={100}
+          height={50}
+          className={buttonClass(notSelected)}
+          onClick={handleConfirm}
+          disabled={notSelected}
+        >
+          확인
+        </Button>
+      </footer>
     </div>
   );
 }
@@ -76,5 +84,3 @@ function buttonClass(disabled: boolean) {
     [styles.buttonDisabled]: disabled,
   });
 }
-
-

@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { getTopic } from "../utils/checkTopic";
+import { getDeveloper } from "../utils/checkTopic";
 import { TOPIC_MAP } from "../constants/topics";
 import getTopicContents from "../utils/getTopicContents";
 
@@ -8,12 +8,12 @@ const useToggleSelection = (context: "topics" | "contents") => {
   const searchParams = useSearchParams();
   const [selected, setSelected] = useState<string[]>([]);
 
-  const topic = getTopic(searchParams.get("topic")) ?? "Frontend";
-  const selectedTopics = TOPIC_MAP[topic];
-  const allTopics = Object.keys(selectedTopics);
+  const developer = getDeveloper(searchParams.get("developer")) ?? "Frontend";
+  const developerTopics = TOPIC_MAP[developer];
+  const allTopics = Object.keys(developerTopics);
 
-  const contents = searchParams.get("selected")?.split(",") || [];
-  const topicContents = getTopicContents(selectedTopics, contents);
+  const topics = searchParams.get("topics")?.split(",") || [];
+  const topicContents = getTopicContents(developerTopics, topics);
 
   const allSelected =
     context === "topics"
@@ -30,7 +30,7 @@ const useToggleSelection = (context: "topics" | "contents") => {
     }
   };
 
-  const toggleSelectTopic = (item: string) => {
+  const toggleSelectItem = (item: string) => {
     if (selected.includes(item)) {
       setSelected(selected.filter((selectedItem) => selectedItem !== item));
     } else {
@@ -39,14 +39,15 @@ const useToggleSelection = (context: "topics" | "contents") => {
   };
 
   return {
-    topic,
+    developer,
     allTopics,
+    topics,
     topicContents,
     selected,
     allSelected,
     notSelected,
     toggleSelectAll,
-    toggleSelectTopic,
+    toggleSelectItem,
   };
 };
 

@@ -1,38 +1,19 @@
-.page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem;
-}
-
-.header {
-  width: 100%;
-  max-width: 100vh;
-  color: var(--color-blue100);
-}
-
-.grid {
-  width: 100vh;
-  height: 500px;
-  display: grid;
-  gap: 1.5rem;
+.list {
+  padding: 16px;
   overflow-y: scroll;
 }
 
 .card {
-  color: var(--color-blue100);
+  color: var(--color-blue300);
   background-color: var(--color-background-light);
 }
 
 .selected {
   color: white;
-  background-color: var(--color-blue100);
+  background-color: var(--color-blue300);
 }
 
 .button {
   box-shadow: 5px 5px 4px var(--color-gray100);
-  border: 2px solid var(--color-blue100);
+  border: 2px solid var(--color-blue300);
 }
