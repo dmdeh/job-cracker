@@ -11,7 +11,6 @@ import styles from './question.module.css';
 
 export default function Question() {
   const searchParams = useSearchParams();
-  const answer = useRef('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const contents = searchParams.get('contents');
@@ -37,25 +36,20 @@ export default function Question() {
   };
 
   const handleAnswerSubmit = () => {
-    const currentAnswer = answer.current.trim();
-    if (!currentAnswer) return;
-
-    getTailQuestion(currentAnswer);
-    answer.current = '';
-    if (textareaRef.current) {
-      textareaRef.current.value = '';
+    if (!textareaRef.current) {
+      return;
     }
+
+    const answer = textareaRef.current.value;
+
+    getTailQuestion(answer);
+    textareaRef.current.value = '';
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
       handleAnswerSubmit();
     }
-  };
-
-  const handleAnswerUpdate = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    answer.current = e.target.value;
   };
 
   return (
@@ -80,10 +74,13 @@ export default function Question() {
             placeholder="답변을 입력해주세요..."
             className={styles.input}
             ref={textareaRef}
-            onChange={handleAnswerUpdate}
             onKeyDown={handleKeyDown}
           />
-          <button className={styles.button} onClick={handleAnswerSubmit}>
+          <button
+            type="submit"
+            className={styles.button}
+            onClick={handleAnswerSubmit}
+          >
             ⬆︎
           </button>
         </div>

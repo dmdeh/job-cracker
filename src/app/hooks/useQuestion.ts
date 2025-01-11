@@ -20,7 +20,7 @@ export function useQuestion(keywords: string[]) {
       const response = await fetchQuestion(keywords[currentIndex], answer);
 
       if (!response.success) {
-        setError(response.error || 'Failed to generate question');
+        setError(response.error ?? 'Failed to generate question');
         return;
       }
 
