@@ -1,24 +1,19 @@
-import styles from "./DeveloperCard.module.css";
-import Link from "next/link";
+import { Developer } from '@/app/constants/developer';
+import Link from 'next/link';
+import styles from './DeveloperCard.module.css';
 
 interface DeveloperCardProps {
-  title: string;
-  description: string;
-  topics: string[];
+  developer: Developer;
 }
 
 export function DeveloperCard({
-  title,
-  description,
-  topics,
+  developer: { type, description, topics },
 }: DeveloperCardProps) {
-  const [developer] = title.split(" ");
-
   return (
-    <Link href={`/selection/topics?developer=${developer}`} className={styles.card}>
+    <Link href={`/selection/topics?developer=${type}`} className={styles.card}>
       <div>
         <div className={styles.header}>
-          <h2 className={styles.title}>{title}</h2>
+          <h2 className={styles.title}>{type}</h2>
           <p className={styles.description}>{description}</p>
         </div>
         <div className={styles.tagContainer}>
