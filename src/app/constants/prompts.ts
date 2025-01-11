@@ -38,7 +38,7 @@ export const getAnswerPrompt = (keyword: string, answer: string) =>
       "next": boolean,
       "feedback": {
         "score": string,
-        "reason": string,
+        "content": string,
         "bestAnswer": string
       }
     }

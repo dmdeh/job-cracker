@@ -1,6 +1,6 @@
-import clsx from "clsx";
-import SpinCracker from "../../common/Loading/SpinCracker";
-import styles from "./QuestionCard.module.css";
+import clsx from 'clsx';
+import SpinCracker from '../../common/Loading/SpinCracker';
+import styles from './QuestionCard.module.css';
 
 interface QuestionCardProps {
   topic: string;
@@ -8,7 +8,7 @@ interface QuestionCardProps {
   isLoading: boolean;
   onNextTopic: () => void;
   onViewFeedback: () => void;
-  viewFeedbackDisabled: boolean;
+  disabled: boolean;
 }
 
 export default function QuestionCard({
@@ -17,7 +17,7 @@ export default function QuestionCard({
   onNextTopic,
   isLoading,
   onViewFeedback,
-  viewFeedbackDisabled,
+  disabled,
 }: QuestionCardProps) {
   const handleNextTopic = () => onNextTopic();
 
@@ -35,7 +35,7 @@ export default function QuestionCard({
             <button
               className={clsx(styles.button, styles.blueButton)}
               onClick={onViewFeedback}
-              disabled={viewFeedbackDisabled}
+              disabled={disabled}
             >
               답변 보기
             </button>

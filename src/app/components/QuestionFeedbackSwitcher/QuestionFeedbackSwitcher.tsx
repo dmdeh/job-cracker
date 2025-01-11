@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import FeedbackCard, { Feedback } from "./FeedbackCard/FeedbackCard";
-import QuestionCard from "./QuestionCard/QuestionCard";
+import { Feedback } from '@/app/type/type';
+import { useEffect, useState } from 'react';
+import FeedbackCard from './FeedbackCard/FeedbackCard';
+import QuestionCard from './QuestionCard/QuestionCard';
 
 interface QuestionFeedbackSwitcherProps {
   topic: string;
@@ -17,32 +18,31 @@ export default function QuestionFeedbackSwitcher({
   isLoading,
   onNextTopic,
 }: QuestionFeedbackSwitcherProps) {
-  const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
-  const { score, reason, bestAnswer } = feedback;
-  const isFeedbackAvailable = score || reason || bestAnswer;
+  const [visible, setVisible] = useState(false);
+  const isEmptyFeedback = Object.values(feedback).every((f) => f == null);
 
   useEffect(() => {
-    if (isFeedbackAvailable) {
-      setIsFeedbackVisible(true);
+    if (!isEmptyFeedback) {
+      setVisible(true);
     }
-  }, [isFeedbackAvailable]);
+  }, []);
 
   return (
     <div>
-      {isFeedbackVisible ? (
+      {visible ? (
         <FeedbackCard
           feedback={feedback}
-          onViewQuestion={() => setIsFeedbackVisible(false)}
+          onViewQuestion={() => setVisible(false)}
           isLoading={isLoading}
         />
       ) : (
         <QuestionCard
           topic={topic}
           question={question}
-          onViewFeedback={() => setIsFeedbackVisible(true)}
+          onViewFeedback={() => setVisible(true)}
           onNextTopic={onNextTopic}
           isLoading={isLoading}
-          viewFeedbackDisabled={!isFeedbackAvailable} // 비활성화
+          disabled={isEmptyFeedback} // 비활성화
         />
       )}
     </div>

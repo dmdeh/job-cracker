@@ -1,11 +1,7 @@
-import SpinCracker from "../../common/Loading/SpinCracker";
-import styles from "./FeedbackCard.module.css";
-
-export interface Feedback {
-  score: string;
-  reason: string;
-  bestAnswer: string;
-}
+import { Feedback } from '@/app/type/type';
+import clsx from 'clsx';
+import SpinCracker from '../../common/Loading/SpinCracker';
+import styles from './FeedbackCard.module.css';
 
 interface FeedbackCardProps {
   feedback: Feedback;
@@ -18,7 +14,7 @@ export default function FeedbackCard({
   isLoading,
   onViewQuestion,
 }: FeedbackCardProps) {
-  const { score, reason, bestAnswer } = feedback;
+  const { score, content, bestAnswer } = feedback;
 
   return (
     <div className={styles.card}>
@@ -26,13 +22,9 @@ export default function FeedbackCard({
         <SpinCracker />
       ) : (
         <>
-          <h2 className={styles.score}>{score}점</h2>
-          <div className={styles.reasonWrapper}>
-            <div className={styles.text}>{reason}</div>
-          </div>
-          <div className={styles.bestAnswerWrapper}>
-            <div className={styles.text}>{bestAnswer}</div>
-          </div>
+          <h2 className={styles.score}>{score ?? 0}점</h2>
+          <div className={wrapperClass('content')}>{content}</div>
+          <div className={wrapperClass('best-answer')}>{bestAnswer}</div>
           <div className={styles.buttonWrapper}>
             <button className={styles.blueButton} onClick={onViewQuestion}>
               질문 보기
@@ -42,4 +34,11 @@ export default function FeedbackCard({
       )}
     </div>
   );
+}
+
+function wrapperClass(type: 'content' | 'best-answer') {
+  return clsx(styles.box, {
+    [styles.content]: type === 'content',
+    [styles['best-answer']]: type === 'best-answer',
+  });
 }

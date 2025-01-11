@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Feedback } from '../components/QuestionFeedbackSwitcher/FeedbackCard/FeedbackCard';
 import { fetchQuestion } from '../services/fetchQuestion';
 
 export function useQuestion(keywords: string[]) {
@@ -7,9 +6,7 @@ export function useQuestion(keywords: string[]) {
   const [error, setError] = useState('');
   const [question, setQuestion] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const initialFeedback: Feedback = { score: '', reason: '', bestAnswer: '' };
-  const [feedback, setFeedback] = useState(initialFeedback);
+  const [feedback, setFeedback] = useState({});
 
   const hasMoreQuestions = currentIndex < keywords.length;
 
@@ -32,7 +29,7 @@ export function useQuestion(keywords: string[]) {
       if (response.feedback) {
         setFeedback(response.feedback);
       } else {
-        setFeedback({ score: '', reason: '', bestAnswer: '' });
+        setFeedback({});
       }
 
       if (answer && !response.next) {
@@ -52,7 +49,7 @@ export function useQuestion(keywords: string[]) {
   const getNextQuestion = () => {
     if (hasMoreQuestions) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
-      setFeedback(initialFeedback);
+      setFeedback({});
     }
   };
 

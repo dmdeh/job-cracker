@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       temperature: 0.7,
     });
 
-    const response = JSON.parse(completion.choices[0].message.content || '{}');
+    const response = JSON.parse(completion.choices[0]?.message.content ?? '{}');
 
     return NextResponse.json({
       success: true,
@@ -58,7 +58,7 @@ function getUserPrompt(keyword: string, answer: string) {
     "next": boolean,
     "feedback": {
       "score": string,
-      "reason": string,
+      "content": string,
       "bestAnswer": string
     }
   }`;
