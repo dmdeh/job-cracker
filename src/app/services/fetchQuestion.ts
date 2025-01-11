@@ -1,4 +1,4 @@
-import { Feedback } from "../components/QuestionFeedbackSwitcher/FeedbackCard/FeedbackCard";
+import { Feedback } from '../components/QuestionFeedbackSwitcher/FeedbackCard/FeedbackCard';
 
 interface SuccessResponse {
   success: true;
@@ -16,13 +16,13 @@ type QuestionResponse = SuccessResponse | ErrorResponse;
 
 export async function fetchQuestion(
   keyword: string,
-  answer: string = ""
+  answer: string = ''
 ): Promise<QuestionResponse> {
   try {
-    const response = await fetch("/api/question", {
-      method: "POST",
+    const response = await fetch('/api/question', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ keyword, answer }),
     });
@@ -30,12 +30,12 @@ export async function fetchQuestion(
     const json = await response.json();
 
     if (!isValidResponse(json)) {
-      throw new Error("Failed to load question");
+      throw new Error('Failed to load question');
     }
 
     return json;
   } catch (error) {
-    console.error("Question fetch error:", error);
+    console.error('Question fetch error:', error);
 
     if (error instanceof Error) {
       return {
@@ -45,25 +45,25 @@ export async function fetchQuestion(
     } else {
       return {
         success: false,
-        error: "Failed to load question",
+        error: 'Failed to load question',
       };
     }
   }
 }
 
 function isValidResponse(responseInJSON: any) {
-  if (responseInJSON == null || typeof responseInJSON !== "object") {
+  if (responseInJSON == null || typeof responseInJSON !== 'object') {
     return false;
   }
   if (
     responseInJSON.success === true &&
-    typeof responseInJSON.question === "string"
+    typeof responseInJSON.question === 'string'
   ) {
     return true;
   }
   if (
     responseInJSON.success === false &&
-    typeof responseInJSON.error === "string"
+    typeof responseInJSON.error === 'string'
   ) {
     return true;
   }

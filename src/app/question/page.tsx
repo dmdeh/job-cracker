@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { useSearchParams } from "next/navigation";
-import styles from "./question.module.css";
-import layoutStyles from "@/app/styles/layout.module.css";
-import useToggleSelection from "../hooks/useToggleSelection";
-import { useQuestion } from "../hooks/useQuestion";
-import shuffleArray from "../utils/shuffleArray";
-import { useMemo, useRef } from "react";
-import QuestionFeedbackSwitcher from "../components/QuestionFeedbackSwitcher/QuestionFeedbackSwitcher";
+import layoutStyles from '@/app/styles/layout.module.css';
+import { useSearchParams } from 'next/navigation';
+import { useRef } from 'react';
+import QuestionFeedbackSwitcher from '../components/QuestionFeedbackSwitcher/QuestionFeedbackSwitcher';
+import { useQuestion } from '../hooks/useQuestion';
+import useToggleSelection from '../hooks/useToggleSelection';
+import shuffleArray from '../utils/shuffleArray';
+import styles from './question.module.css';
 
 export default function Question() {
   const searchParams = useSearchParams();
-  const answer = useRef("");
+  const answer = useRef('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const contents = searchParams.get("contents");
-  const { topicContents } = useToggleSelection("contents");
+  const contents = searchParams.get('contents');
+  const { topicContents } = useToggleSelection('contents');
   const questionList =
-    contents === "all" ? topicContents : contents?.split(",");
+    contents === 'all' ? topicContents : contents?.split(',');
 
   const shuffleQuestion = shuffleArray(questionList || []);
 
@@ -32,8 +32,8 @@ export default function Question() {
   } = useQuestion(shuffleQuestion);
 
   const getQuestionMessage = () => {
-    if (!hasMoreQuestions) return "질문이 끝났습니다. 수고하셨습니다.";
-    return question ?? "질문을 불러오지 못했습니다.";
+    if (!hasMoreQuestions) return '질문이 끝났습니다. 수고하셨습니다.';
+    return question ?? '질문을 불러오지 못했습니다.';
   };
 
   const handleAnswerSubmit = () => {
@@ -41,14 +41,14 @@ export default function Question() {
     if (!currentAnswer) return;
 
     getTailQuestion(currentAnswer);
-    answer.current = "";
+    answer.current = '';
     if (textareaRef.current) {
-      textareaRef.current.value = "";
+      textareaRef.current.value = '';
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleAnswerSubmit();
     }
@@ -66,7 +66,7 @@ export default function Question() {
       </header>
       <main className={styles.question}>
         <QuestionFeedbackSwitcher
-          topic={shuffleQuestion[currentIndex] || "면접 종료"}
+          topic={shuffleQuestion[currentIndex] || '면접 종료'}
           question={getQuestionMessage()}
           onNextTopic={getNextQuestion}
           feedback={feedback}
