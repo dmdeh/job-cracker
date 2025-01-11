@@ -3,7 +3,7 @@ import { Feedback } from '../components/QuestionFeedbackSwitcher/FeedbackCard/Fe
 interface SuccessResponse {
   success: true;
   question: string;
-  hasTailQuestion: boolean;
+  next: boolean;
   feedback: Feedback;
 }
 

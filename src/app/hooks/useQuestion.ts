@@ -35,7 +35,7 @@ export function useQuestion(keywords: string[]) {
         setFeedback({ score: '', reason: '', bestAnswer: '' });
       }
 
-      if (answer && !response.hasTailQuestion) {
+      if (answer && !response.next) {
         setCurrentIndex((prev) => prev + 1);
       }
     } catch (err) {
