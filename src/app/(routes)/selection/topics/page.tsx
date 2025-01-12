@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import styles from "./topics.module.css";
-import layoutStyles from "@/app/styles/layout.module.css";
-import Button from "@/app/components/common/Button/Button";
-import clsx from "clsx";
-import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
-import { theme } from "@/app/constants/theme";
-import useToggleSelection from "@/app/hooks/useToggleSelection";
+import { SelectionCard } from '@/components/SelectionCard/SelectionCard';
+import Button from '@/components/common/Button/Button';
+import { theme } from '@/constants/theme';
+import useToggleSelection from '@/hooks/useToggleSelection';
+import layoutStyles from '@/styles/layout.module.css';
+import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
+import styles from './topics.module.css';
 
 export default function Topics() {
   const router = useRouter();
@@ -19,12 +19,12 @@ export default function Topics() {
     notSelected,
     toggleSelectAll,
     toggleSelectItem,
-  } = useToggleSelection("topics");
+  } = useToggleSelection('topics');
 
   const handleConfirm = () => {
     if (!selected.length) return;
     router.push(
-      `/selection/contents?developer=${developer}&topics=${selected.join(",")}`
+      `/selection/contents?developer=${developer}&topics=${selected.join(',')}`
     );
   };
 

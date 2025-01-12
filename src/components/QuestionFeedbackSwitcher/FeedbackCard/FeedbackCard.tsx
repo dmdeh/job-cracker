@@ -1,4 +1,4 @@
-import { Feedback } from '@/app/type/type';
+import { Feedback } from '@/types/type';
 import clsx from 'clsx';
 import SpinCracker from '../../common/Loading/SpinCracker';
 import styles from './FeedbackCard.module.css';

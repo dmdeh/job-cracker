@@ -1,4 +1,4 @@
-import { TOPIC_MAP, DeveloperKey } from "../constants/topics";
+import { DeveloperKey, TOPIC_MAP } from '../constants/topics';
 
 function isDeveloper(value: string | null): value is DeveloperKey {
   return value !== null && Object.keys(TOPIC_MAP).includes(value);

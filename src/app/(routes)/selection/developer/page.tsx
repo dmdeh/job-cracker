@@ -1,6 +1,6 @@
-import { DeveloperCard } from '@/app/components/DeveloperCard/DeveloperCard';
-import developers from '@/app/constants/developer';
-import layoutStyles from '@/app/styles/layout.module.css';
+import { DeveloperCard } from '@/components/DeveloperCard/DeveloperCard';
+import developers from '@/constants/developer';
+import layoutStyles from '@/styles/layout.module.css';
 
 export default function Developer() {
   return (

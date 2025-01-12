@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import styles from "./contents.module.css";
-import layoutStyles from "@/app/styles/layout.module.css";
-import { SelectionCard } from "@/app/components/SelectionCard/SelectionCard";
-import clsx from "clsx";
-import Button from "@/app/components/common/Button/Button";
-import { theme } from "@/app/constants/theme";
-import useToggleSelection from "@/app/hooks/useToggleSelection";
+import { SelectionCard } from '@/components/SelectionCard/SelectionCard';
+import Button from '@/components/common/Button/Button';
+import { theme } from '@/constants/theme';
+import useToggleSelection from '@/hooks/useToggleSelection';
+import layoutStyles from '@/styles/layout.module.css';
+import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
+import styles from './contents.module.css';
 
 export default function Contents() {
   const router = useRouter();
@@ -19,12 +19,12 @@ export default function Contents() {
     notSelected,
     toggleSelectAll,
     toggleSelectItem,
-  } = useToggleSelection("contents");
+  } = useToggleSelection('contents');
 
   const handleConfirm = () => {
     if (!selected.length) return;
 
-    const contents = allSelected ? "all" : selected.join(",");
+    const contents = allSelected ? 'all' : selected.join(',');
     router.push(`/question?topics=${topics}&contents=${contents}`);
   };
 

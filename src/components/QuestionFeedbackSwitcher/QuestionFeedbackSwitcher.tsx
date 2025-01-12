@@ -1,4 +1,4 @@
-import { Feedback } from '@/app/type/type';
+import { Feedback } from '@/types/type';
 import { useEffect, useState } from 'react';
 import FeedbackCard from './FeedbackCard/FeedbackCard';
 import QuestionCard from './QuestionCard/QuestionCard';

@@ -1,7 +1,7 @@
 'use client';
 
-import layoutStyles from '@/app/styles/layout.module.css';
-import styles from '@/app/styles/not-found.module.css';
+import layoutStyles from '@/styles/layout.module.css';
+import styles from '@/styles/not-found.module.css';
 
 import { useEffect } from 'react';
 

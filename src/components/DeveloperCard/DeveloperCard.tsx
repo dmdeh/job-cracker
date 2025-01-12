@@ -1,4 +1,4 @@
-import { Developer } from '@/app/constants/developer';
+import { Developer } from '@/constants/developer';
 import Link from 'next/link';
 import styles from './DeveloperCard.module.css';
 

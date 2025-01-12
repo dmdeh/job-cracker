@@ -1,12 +1,12 @@
 'use client';
 
-import layoutStyles from '@/app/styles/layout.module.css';
+import layoutStyles from '@/styles/layout.module.css';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
-import QuestionFeedbackSwitcher from '../components/QuestionFeedbackSwitcher/QuestionFeedbackSwitcher';
-import { useQuestion } from '../hooks/useQuestion';
-import useToggleSelection from '../hooks/useToggleSelection';
-import shuffleArray from '../utils/shuffleArray';
+import QuestionFeedbackSwitcher from '../../../components/QuestionFeedbackSwitcher/QuestionFeedbackSwitcher';
+import { useQuestion } from '../../../hooks/useQuestion';
+import useToggleSelection from '../../../hooks/useToggleSelection';
+import shuffleArray from '../../../utils/shuffleArray';
 import styles from './question.module.css';
 
 export default function Question() {

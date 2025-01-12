@@ -1,4 +1,4 @@
-import { Feedback } from '../type/type';
+import { Feedback } from '../types/type';
 
 interface SuccessResponse {
   success: true;
