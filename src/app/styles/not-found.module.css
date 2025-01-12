@@ -1,0 +1,36 @@
+.card {
+  padding: 20px;
+  margin: auto 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 4px var(--color-gray100);
+  background-color: var(--color-background-light);
+  cursor: pointer;
+}
+
+.content {
+  height: 300px;
+  color: var(--color-blue300);
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 45px;
+}
+
+.description {
+  font-size: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 50px;
+  color: white;
+  background-color: var(--color-blue300);
+}
