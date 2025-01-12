@@ -24,8 +24,10 @@ export default function QuestionFeedbackSwitcher({
   useEffect(() => {
     if (!isEmptyFeedback) {
       setVisible(true);
+    } else {
+      setVisible(false);
     }
-  }, []);
+  }, [isEmptyFeedback]);
 
   return (
     <div>
