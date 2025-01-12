@@ -1,0 +1,49 @@
+.card {
+  position: relative;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 5px 5px 4px var(--color-gray100);
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.score {
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--color-blue300);
+}
+
+.box {
+  padding: 25px 10px 25px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.content {
+  background-color: var(--color-blue100);
+  box-shadow: inset 10px 0 0 var(--color-blue200);
+}
+
+.best_answer {
+  background-color: var(--color-background);
+  box-shadow: inset 10px 0 0 var(--color-yellow);
+}
+
+.button_wrapper {
+  text-align: end;
+}
+
+.blue_button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  background-color: var(--color-blue300);
+}

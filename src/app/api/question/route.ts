@@ -1,5 +1,5 @@
-import { SYSTEM_PROMPTS } from '@/app/constants/prompts';
-import { openai } from '@/app/services/openai';
+import { SYSTEM_PROMPTS } from '@/constants/prompts';
+import { openai } from '@/services/openai';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
