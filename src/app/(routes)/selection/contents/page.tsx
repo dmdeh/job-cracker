@@ -8,7 +8,17 @@ import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import styles from './contents.module.css';
 
-export default function Contents() {
+interface HeaderProps {
+  selected: string[];
+  contents: string[];
+}
+
+interface FooterProps {
+  notSelected: boolean;
+  onConfirm: () => void;
+}
+
+export function Contents() {
   const router = useRouter();
   const {
     topics,
@@ -29,10 +39,7 @@ export default function Contents() {
 
   return (
     <>
-      <h1>
-        주제를 선택해주세요! {selected.length} / {topicContents.length}
-      </h1>
-      <p>당신을 위한 맞춤형 면접이 진행됩니다.</p>
+      <Contents.Header selected={selected} contents={topicContents} />
       <div className={styles.list}>
         <SelectionCard
           title="전체 선택"
@@ -50,19 +57,31 @@ export default function Contents() {
           />
         ))}
       </div>
-      <Button
-        backgroundColor={theme.colors.backgroundLight}
-        width={100}
-        height={50}
-        className={buttonClass(notSelected)}
-        onClick={handleConfirm}
-        disabled={notSelected}
-      >
-        확인
-      </Button>
+      <Contents.Footer notSelected={notSelected} onConfirm={handleConfirm} />
     </>
   );
 }
+
+Contents.Header = ({ selected, contents }: HeaderProps) => (
+  <>
+    <h1>
+      주제를 선택해주세요! {selected.length} / {contents.length}
+    </h1>
+    <p>당신을 위한 맞춤형 면접이 진행됩니다.</p>
+  </>
+);
+Contents.Footer = ({ notSelected, onConfirm }: FooterProps) => (
+  <Button
+    backgroundColor={theme.colors.backgroundLight}
+    width={100}
+    height={50}
+    className={buttonClass(notSelected)}
+    onClick={onConfirm}
+    disabled={notSelected}
+  >
+    확인
+  </Button>
+);
 
 function cardClass(selected: boolean) {
   return clsx(styles.card, {
