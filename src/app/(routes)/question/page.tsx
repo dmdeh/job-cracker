@@ -1,6 +1,6 @@
 'use client';
 
-import layoutStyles from '@/styles/layout.module.css';
+import Layout from '@/components/Layout';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import QuestionFeedbackSwitcher from '../../../components/QuestionFeedbackSwitcher/QuestionFeedbackSwitcher';
@@ -57,39 +57,41 @@ export default function Question() {
     }
   };
 
-  return (
-    <div className={layoutStyles.page}>
-      <header className={layoutStyles.header}>
-        <h1>개발자 기술 면접</h1>
-        <p>면접관의 질문에 답변해주세요</p>
-      </header>
-      <main className={styles.question}>
-        <QuestionFeedbackSwitcher
-          topic={shuffleQuestion[currentIndex] || '면접 종료'}
-          question={getQuestionMessage()}
-          onNextTopic={getNextQuestion}
-          feedback={feedback}
-          isLoading={isLoading}
-        />
-      </main>
-      <footer className={styles.footer}>
-        <div className={styles.answer}>
-          <textarea
-            id="answer"
-            placeholder="답변을 입력해주세요..."
-            className={styles.input}
-            ref={textareaRef}
-            onKeyDown={handleKeyDown}
-          />
-          <button
-            type="submit"
-            className={styles.button}
-            onClick={handleAnswerSubmit}
-          >
-            ⬆︎
-          </button>
-        </div>
-      </footer>
+  const header = (
+    <>
+      <h1>개발자 기술 면접</h1>
+      <p>면접관의 질문에 답변해주세요</p>
+    </>
+  );
+
+  const footer = (
+    <div className={styles.answer}>
+      <textarea
+        id="answer"
+        placeholder="답변을 입력해주세요..."
+        className={styles.input}
+        ref={textareaRef}
+        onKeyDown={handleKeyDown}
+      />
+      <button
+        type="submit"
+        className={styles.button}
+        onClick={handleAnswerSubmit}
+      >
+        ⬆︎
+      </button>
     </div>
+  );
+
+  return (
+    <Layout header={header} footer={footer}>
+      <QuestionFeedbackSwitcher
+        topic={shuffleQuestion[currentIndex] || '면접 종료'}
+        question={getQuestionMessage()}
+        onNextTopic={getNextQuestion}
+        feedback={feedback}
+        isLoading={isLoading}
+      />
+    </Layout>
   );
 }
