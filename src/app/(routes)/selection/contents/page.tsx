@@ -18,7 +18,7 @@ interface FooterProps {
   onConfirm: () => void;
 }
 
-export function Contents() {
+export default function Contents() {
   const router = useRouter();
   const {
     topics,
