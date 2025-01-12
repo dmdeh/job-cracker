@@ -29,16 +29,16 @@
   box-shadow: inset 10px 0 0 var(--color-blue200);
 }
 
-.best-answer {
+.best_answer {
   background-color: var(--color-background);
   box-shadow: inset 10px 0 0 var(--color-yellow);
 }
 
-.buttonWrapper {
+.button_wrapper {
   text-align: end;
 }
 
-.blueButton {
+.blue_button {
   padding: 10px 20px;
   border: none;
   border-radius: 10px;

@@ -22,7 +22,7 @@
   color: var(--color-blue400);
 }
 
-.tagContainer {
+.tag_container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;

@@ -28,19 +28,19 @@ export default function QuestionCard({
       ) : (
         <>
           <h2 className={styles.topic}>{topic}</h2>
-          <div className={styles.questionWrapper}>
+          <div className={styles.question_wrapper}>
             <div className={styles.question}>Q. {question}</div>
           </div>
-          <div className={styles.buttonWrapper}>
+          <div className={styles.button_wrapper}>
             <button
-              className={clsx(styles.button, styles.blueButton)}
+              className={clsx(styles.button, styles.blue_button)}
               onClick={onViewFeedback}
               disabled={disabled}
             >
               답변 보기
             </button>
             <button
-              className={clsx(styles.button, styles.orangeButton)}
+              className={clsx(styles.button, styles.orange_button)}
               onClick={handleNextTopic}
             >
               다른 주제

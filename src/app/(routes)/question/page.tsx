@@ -73,7 +73,7 @@ export default function Question() {
         />
       </main>
       <footer className={styles.footer}>
-        <div className={styles.inputWrapper}>
+        <div className={styles.answer}>
           <textarea
             id="answer"
             placeholder="답변을 입력해주세요..."

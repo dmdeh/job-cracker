@@ -16,7 +16,7 @@
   color: var(--color-blue300);
 }
 
-.questionWrapper {
+.question_wrapper {
   background-color: var(--color-blue100);
   padding: 25px 10px 25px 20px;
   margin: 20px 0;
@@ -29,7 +29,7 @@
   line-height: 1.5;
 }
 
-.buttonWrapper {
+.button_wrapper {
   text-align: end;
 }
 
@@ -42,16 +42,16 @@
   color: white;
 }
 
-.blueButton {
+.blue_button {
   background-color: var(--color-blue300);
 }
 
-.blueButton:disabled {
+.blue_button:disabled {
   background-color: var(--color-gray100);
   cursor: not-allowed;
 }
 
-.orangeButton {
+.orange_button {
   margin-left: 10px;
   background-color: var(--color-orange);
 }

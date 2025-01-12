@@ -16,7 +16,7 @@ export function DeveloperCard({
           <h2 className={styles.title}>{type}</h2>
           <p className={styles.description}>{description}</p>
         </div>
-        <div className={styles.tagContainer}>
+        <div className={styles.tag_container}>
           {topics.map((topic) => (
             <span key={topic} className={styles.tag}>
               {topic}

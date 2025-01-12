@@ -24,9 +24,9 @@ export default function FeedbackCard({
         <>
           <h2 className={styles.score}>{score ?? 0}점</h2>
           <div className={wrapperClass('content')}>{content}</div>
-          <div className={wrapperClass('best-answer')}>{bestAnswer}</div>
-          <div className={styles.buttonWrapper}>
-            <button className={styles.blueButton} onClick={onViewQuestion}>
+          <div className={wrapperClass('best_answer')}>{bestAnswer}</div>
+          <div className={styles.button_wrapper}>
+            <button className={styles.blue_button} onClick={onViewQuestion}>
               질문 보기
             </button>
           </div>
@@ -36,9 +36,9 @@ export default function FeedbackCard({
   );
 }
 
-function wrapperClass(type: 'content' | 'best-answer') {
+function wrapperClass(type: 'content' | 'best_answer') {
   return clsx(styles.box, {
     [styles.content]: type === 'content',
-    [styles['best-answer']]: type === 'best-answer',
+    [styles['best_answer']]: type === 'best_answer',
   });
 }
