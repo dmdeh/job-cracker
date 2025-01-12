@@ -1,6 +1,5 @@
 'use client';
 
-import Layout from '@/components/Layout';
 import { SelectionCard } from '@/components/SelectionCard/SelectionCard';
 import Button from '@/components/common/Button/Button';
 import { theme } from '@/constants/theme';
@@ -28,50 +27,40 @@ export default function Contents() {
     router.push(`/question?topics=${topics}&contents=${contents}`);
   };
 
-  const header = (
+  return (
     <>
       <h1>
         주제를 선택해주세요! {selected.length} / {topicContents.length}
       </h1>
       <p>당신을 위한 맞춤형 면접이 진행됩니다.</p>
-    </>
-  );
-
-  const footer = (
-    <Button
-      backgroundColor={theme.colors.backgroundLight}
-      width={100}
-      height={50}
-      className={buttonClass(notSelected)}
-      onClick={handleConfirm}
-      disabled={notSelected}
-    >
-      확인
-    </Button>
-  );
-
-  return (
-    <Layout header={header} footer={footer} className={styles.list}>
-      <SelectionCard
-        title="전체 선택"
-        isSelected={allSelected}
-        onClick={() => toggleSelectAll(topicContents)}
-        className={cardClass(allSelected)}
-      />
-      {topicContents.map((item) => {
-        const isSelected = selected.includes(item);
-
-        return (
+      <div className={styles.list}>
+        <SelectionCard
+          title="전체 선택"
+          isSelected={allSelected}
+          onClick={() => toggleSelectAll(topicContents)}
+          className={cardClass(allSelected)}
+        />
+        {topicContents.map((item) => (
           <SelectionCard
             key={item}
             title={item}
-            isSelected={isSelected}
+            isSelected={selected.includes(item)}
             onClick={() => toggleSelectItem(item)}
-            className={cardClass(isSelected)}
+            className={cardClass(selected.includes(item))}
           />
-        );
-      })}
-    </Layout>
+        ))}
+      </div>
+      <Button
+        backgroundColor={theme.colors.backgroundLight}
+        width={100}
+        height={50}
+        className={buttonClass(notSelected)}
+        onClick={handleConfirm}
+        disabled={notSelected}
+      >
+        확인
+      </Button>
+    </>
   );
 }
 
