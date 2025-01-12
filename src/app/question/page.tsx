@@ -22,6 +22,7 @@ export default function Question() {
 
   const {
     isLoading,
+    error,
     question,
     feedback,
     getTailQuestion,
@@ -29,6 +30,10 @@ export default function Question() {
     hasMoreQuestions,
     currentIndex,
   } = useQuestion(shuffleQuestion);
+
+  if (error) {
+    throw new Error(error);
+  }
 
   const getQuestionMessage = () => {
     if (!hasMoreQuestions) return '질문이 끝났습니다. 수고하셨습니다.';
