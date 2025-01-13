@@ -1,8 +1,8 @@
 const developers = {
   Frontend: {
     type: 'Frontend Developer',
-    description: 'UI/UX에 관심이 많고, 사용자 경험을 개선하는 것을 즐기시나요?',
-    topics: ['React', 'JavaScript', 'TypeScript', 'HTML/CSS'],
+    description: '사용자 경험을 개선하는 것을 즐기시나요?',
+    topics: ['JavaScript', 'TypeScript', 'React', 'HTML/CSS'],
   },
   Backend: {
     type: 'Backend Developer',
@@ -19,5 +19,13 @@ const developers = {
 type DeveloperType = keyof typeof developers;
 
 export type Developer = (typeof developers)[DeveloperType];
+
+export type DeveloperTypes = Developer['type'];
+
+export const TYPE_TO_KEY: Record<DeveloperTypes, DeveloperType> = {
+  'Frontend Developer': 'Frontend',
+  'Backend Developer': 'Backend',
+  'iOS Developer': 'iOS',
+} as const;
 
 export default developers;
