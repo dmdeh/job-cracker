@@ -45,10 +45,13 @@ export default function Question() {
       return;
     }
 
-    const answer = textareaRef.current.value;
+    let answer = textareaRef.current.value;
+    if (answer.trim() === '') {
+      return;
+    }
 
     getTailQuestion(answer);
-    textareaRef.current.value = '';
+    answer = '';
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
