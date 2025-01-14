@@ -1,5 +1,5 @@
 .card {
-  padding: 20px;
+  padding: 30px 15px;
   border-radius: 10px;
   box-shadow: 5px 5px 4px var(--color-gray100);
   background-color: var(--color-background-light);
@@ -24,7 +24,7 @@
 
 .tag_container {
   display: flex;
-  flex-wrap: wrap;
+  overflow: hidden;
   gap: 10px;
 }
 
