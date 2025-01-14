@@ -31,7 +31,8 @@ export default function Topics() {
   return (
     <div className={layoutStyles.page}>
       <header className={layoutStyles.header}>
-        <h1>어떤 주제로 {developer} 면접을 원하시나요?</h1>
+        <h1>어떤 주제를 원하시나요?</h1>
+        <p>원하는 {developer} 분야를 선택할 수 있어요.</p>
       </header>
       <main className={clsx(layoutStyles.list, styles.list)}>
         <SelectionCard
@@ -54,7 +55,7 @@ export default function Topics() {
           );
         })}
       </main>
-      <footer className={layoutStyles.footer}>
+      <section className={layoutStyles.section}>
         <Button
           backgroundColor={theme.colors.backgroundLight}
           width={100}
@@ -65,7 +66,7 @@ export default function Topics() {
         >
           확인
         </Button>
-      </footer>
+      </section>
     </div>
   );
 }

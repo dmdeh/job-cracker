@@ -72,7 +72,7 @@ export default function Question() {
           isLoading={isLoading}
         />
       </main>
-      <footer className={styles.footer}>
+      <section className={styles.section}>
         <div className={styles.answer}>
           <textarea
             id="answer"
@@ -89,7 +89,7 @@ export default function Question() {
             ⬆︎
           </button>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }

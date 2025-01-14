@@ -34,9 +34,12 @@ export default function Contents() {
   return (
     <div className={layoutStyles.page}>
       <header className={layoutStyles.header}>
-        <h1>
-          주제를 선택해주세요! {selected.length} / {topicContents.length}
-        </h1>
+        <div className={styles.title}>
+          <h1>주제를 선택해주세요!</h1>
+          <h2>
+            {selected.length} / {topicContents.length}
+          </h2>
+        </div>
         <p>당신을 위한 맞춤형 면접이 진행됩니다.</p>
       </header>
       <main className={clsx(layoutStyles.list, styles.list)}>
@@ -60,7 +63,7 @@ export default function Contents() {
           );
         })}
       </main>
-      <footer className={layoutStyles.footer}>
+      <section className={layoutStyles.section}>
         <Button
           backgroundColor={theme.colors.backgroundLight}
           width={100}
@@ -71,7 +74,7 @@ export default function Contents() {
         >
           확인
         </Button>
-      </footer>
+      </section>
     </div>
   );
 }
