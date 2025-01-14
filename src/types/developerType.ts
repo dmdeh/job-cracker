@@ -1,10 +1,15 @@
-import { TOPIC_MAP } from '@/constants/topics';
+import developers from '@/constants/developer';
 
-export type DeveloperKey = keyof typeof TOPIC_MAP;
-export type DeveloperType = `${DeveloperKey} Developer`;
+export type DeveloperInfo = typeof developers;
 
-export type DeveloperInfo = {
-  type: DeveloperType;
+export type DeveloperKey = keyof DeveloperInfo;
+
+export type DeveloperDetail = {
+  type: DeveloperInfo[DeveloperKey]['type'];
   description: string;
   topics: string[];
+};
+
+export type DeveloperTypeMap = {
+  [K in DeveloperDetail['type']]: DeveloperKey;
 };

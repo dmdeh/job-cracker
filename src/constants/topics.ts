@@ -1,4 +1,4 @@
-const TOPICS_FRONTEND = {
+export const TOPICS_FRONTEND = {
   'HTML/CSS': [
     '시맨틱 태그',
     'Flexbox / Grid 레이아웃',
@@ -41,9 +41,9 @@ const TOPICS_FRONTEND = {
     '리액트 성능 최적화',
     '테스팅',
   ],
-};
+} as const;
 
-const TOPICS_BACKEND = {
+export const TOPICS_BACKEND = {
   Java: [
     'Java 언어 기초',
     '객체지향 프로그래밍 (OOP) 개념',
@@ -87,9 +87,9 @@ const TOPICS_BACKEND = {
     'MongoDB',
     'Redis',
   ],
-};
+} as const;
 
-const TOPICS_IOS = {
+export const TOPICS_IOS = {
   Swift: [
     'Swift 기초 문법',
     '옵셔널',
@@ -116,12 +116,4 @@ const TOPICS_IOS = {
     '앱 배포 및 앱 스토어',
     'SwiftUI 개요',
   ],
-};
-
-export const TOPIC_MAP = {
-  Frontend: TOPICS_FRONTEND,
-  Backend: TOPICS_BACKEND,
-  iOS: TOPICS_IOS,
-};
-
-export type TopicKey = (typeof TOPIC_MAP)[keyof typeof TOPIC_MAP];
+} as const;
