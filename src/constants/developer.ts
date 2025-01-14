@@ -1,4 +1,6 @@
-const developers = {
+import { DeveloperInfo, DeveloperKey, DeveloperType } from '@/types/developer';
+
+const developers: Record<DeveloperKey, DeveloperInfo> = {
   Frontend: {
     type: 'Frontend Developer',
     description: '사용자 경험을 개선하는 것을 즐기시나요?',
@@ -16,16 +18,8 @@ const developers = {
   },
 } as const;
 
-type DeveloperType = keyof typeof developers;
-
-export type Developer = (typeof developers)[DeveloperType];
-
-export type DeveloperTypes = Developer['type'];
-
-export const TYPE_TO_KEY: Record<DeveloperTypes, DeveloperType> = {
-  'Frontend Developer': 'Frontend',
-  'Backend Developer': 'Backend',
-  'iOS Developer': 'iOS',
-} as const;
+export const TYPE_TO_KEY = Object.fromEntries(
+  Object.entries(developers).map(([key, info]) => [info.type, key])
+) as Record<DeveloperType, DeveloperKey>;
 
 export default developers;

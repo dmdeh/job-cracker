@@ -12,6 +12,7 @@ import styles from './contents.module.css';
 export default function Contents() {
   const router = useRouter();
   const {
+    developer,
     topics,
     topicContents,
     selected,
@@ -25,7 +26,9 @@ export default function Contents() {
     if (!selected.length) return;
 
     const contents = allSelected ? 'all' : selected.join(',');
-    router.push(`/question?topics=${topics}&contents=${contents}`);
+    router.push(
+      `/question?developer=${developer}&topics=${topics}&contents=${contents}`
+    );
   };
 
   return (

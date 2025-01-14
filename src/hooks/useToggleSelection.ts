@@ -7,8 +7,9 @@ import getTopicContents from '../utils/getTopicContents';
 const useToggleSelection = (context: 'topics' | 'contents') => {
   const searchParams = useSearchParams();
   const [selected, setSelected] = useState<string[]>([]);
+  const developerParam = searchParams.get('developer');
 
-  const developer = getDeveloper(searchParams.get('developer')) ?? 'Frontend';
+  const developer = getDeveloper(developerParam, context) ?? 'Frontend';
   const developerTopics = TOPIC_MAP[developer];
   const allTopics = Object.keys(developerTopics);
 
