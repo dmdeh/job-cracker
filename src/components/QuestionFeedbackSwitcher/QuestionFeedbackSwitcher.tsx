@@ -18,14 +18,14 @@ export default function QuestionFeedbackSwitcher({
   isLoading,
   onNextTopic,
 }: QuestionFeedbackSwitcherProps) {
-  const [visible, setVisible] = useState(false);
   const isEmptyFeedback = Object.values(feedback).every((f) => f == null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (!isEmptyFeedback) {
       setVisible(true);
     }
-  }, []);
+  }, [isEmptyFeedback]);
 
   return (
     <div>

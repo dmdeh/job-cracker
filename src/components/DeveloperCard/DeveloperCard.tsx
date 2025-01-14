@@ -1,9 +1,9 @@
-import { Developer } from '@/constants/developer';
+import { DeveloperDetail } from '@/types/developerType';
 import Link from 'next/link';
 import styles from './DeveloperCard.module.css';
 
 interface DeveloperCardProps {
-  developer: Developer;
+  developer: DeveloperDetail;
 }
 
 export function DeveloperCard({
