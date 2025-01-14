@@ -1,4 +1,4 @@
-import { DeveloperInfo, DeveloperKey, DeveloperType } from '@/types/developer';
+import { DeveloperInfo, DeveloperKey } from '@/types/developerType';
 
 const developers: Record<DeveloperKey, DeveloperInfo> = {
   Frontend: {
@@ -18,8 +18,16 @@ const developers: Record<DeveloperKey, DeveloperInfo> = {
   },
 } as const;
 
-export const TYPE_TO_KEY = Object.fromEntries(
-  Object.entries(developers).map(([key, info]) => [info.type, key])
-) as Record<DeveloperType, DeveloperKey>;
+type DeveloperTypeMap = {
+  [K in DeveloperInfo['type']]: DeveloperKey;
+};
+
+export const TYPE_TO_KEY = Object.entries(developers).reduce(
+  (acc, [key, info]) => {
+    acc[info.type] = key as DeveloperKey;
+    return acc;
+  },
+  {} as DeveloperTypeMap
+);
 
 export default developers;
