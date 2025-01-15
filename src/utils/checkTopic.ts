@@ -1,5 +1,5 @@
 import developers, { TYPE_TO_KEY } from '@/constants/developer';
-import { DeveloperKey, DeveloperType } from '@/types/developer';
+import { DeveloperKey, DeveloperType } from '@/types/developerType';
 
 export const isDeveloperType = (value: string | null): value is DeveloperType =>
   value != null && Object.values(developers).some((dev) => dev.type === value);
@@ -24,5 +24,5 @@ export const getDeveloper = (
   }
 
   if (!isDeveloperType(value)) return null;
-  return TYPE_TO_KEY[value as DeveloperType];
+  return TYPE_TO_KEY[value];
 };

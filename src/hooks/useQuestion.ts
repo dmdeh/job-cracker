@@ -54,9 +54,7 @@ export function useQuestion(keywords: string[]) {
   };
 
   useEffect(() => {
-    if (hasMoreQuestions) {
-      generateQuestion();
-    }
+    generateQuestion();
   }, []);
 
   return {

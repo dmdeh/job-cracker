@@ -10,9 +10,14 @@ export default function Developer() {
         <p>관심 있는 개발 분야를 선택해주세요.</p>
       </header>
       <main className={layoutStyles.list}>
-        {Object.entries(developers).map(([key, developer]) => (
-          <DeveloperCard key={key} developer={developer} />
-        ))}
+        {Object.entries(developers).map(
+          ([key, { type, description, topics }]) => (
+            <DeveloperCard
+              key={key}
+              developer={{ type, description, topics: Object.keys(topics) }}
+            />
+          )
+        )}
       </main>
     </div>
   );
