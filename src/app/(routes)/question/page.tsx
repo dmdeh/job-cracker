@@ -1,9 +1,8 @@
 'use client';
 
-import SpinCracker from '@/components/common/Loading/SpinCracker';
 import { Page } from '@/components/common/Page/Page';
 import { useSearchParams } from 'next/navigation';
-import { Suspense, useRef } from 'react';
+import { useRef } from 'react';
 import QuestionFeedbackSwitcher from '../../../components/QuestionFeedbackSwitcher/QuestionFeedbackSwitcher';
 import { useQuestion } from '../../../hooks/useQuestion';
 import useToggleSelection from '../../../hooks/useToggleSelection';
@@ -65,40 +64,38 @@ export default function Question() {
   };
 
   return (
-    <Suspense fallback={<SpinCracker />}>
-      <Page>
-        <Page.Top>
-          <h1>개발자 기술 면접</h1>
-          <p>면접관의 질문에 답변해주세요</p>
-        </Page.Top>
-        <Page.Main className={styles.question}>
-          <QuestionFeedbackSwitcher
-            topic={topic || '면접 종료'}
-            question={getQuestionMessage()}
-            onNextTopic={getNextQuestion}
-            feedback={feedback}
-            isLoading={isLoading}
+    <Page>
+      <Page.Top>
+        <h1>개발자 기술 면접</h1>
+        <p>면접관의 질문에 답변해주세요</p>
+      </Page.Top>
+      <Page.Main className={styles.question}>
+        <QuestionFeedbackSwitcher
+          topic={topic || '면접 종료'}
+          question={getQuestionMessage()}
+          onNextTopic={getNextQuestion}
+          feedback={feedback}
+          isLoading={isLoading}
+        />
+      </Page.Main>
+      <Page.Bottom className={styles.section}>
+        <div className={styles.answer}>
+          <textarea
+            id="answer"
+            placeholder="답변을 입력해주세요..."
+            className={styles.input}
+            ref={textareaRef}
+            onKeyDown={handleKeyDown}
           />
-        </Page.Main>
-        <Page.Bottom className={styles.section}>
-          <div className={styles.answer}>
-            <textarea
-              id="answer"
-              placeholder="답변을 입력해주세요..."
-              className={styles.input}
-              ref={textareaRef}
-              onKeyDown={handleKeyDown}
-            />
-            <button
-              type="submit"
-              className={styles.button}
-              onClick={handleAnswerSubmit}
-            >
-              ⬆︎
-            </button>
-          </div>
-        </Page.Bottom>
-      </Page>
-    </Suspense>
+          <button
+            type="submit"
+            className={styles.button}
+            onClick={handleAnswerSubmit}
+          >
+            ⬆︎
+          </button>
+        </div>
+      </Page.Bottom>
+    </Page>
   );
 }
