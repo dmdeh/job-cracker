@@ -10,6 +10,8 @@ export type DeveloperDetail = {
   topics: string[];
 };
 
+export type DeveloperType = DeveloperDetail['type'];
+
 export type DeveloperTypeMap = {
   [K in DeveloperDetail['type']]: DeveloperKey;
 };

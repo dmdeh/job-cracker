@@ -2,9 +2,9 @@
 
 import { SelectionCard } from '@/components/SelectionCard/SelectionCard';
 import Button from '@/components/common/Button/Button';
+import { Page } from '@/components/common/Page/Page';
 import { theme } from '@/constants/theme';
 import useToggleSelection from '@/hooks/useToggleSelection';
-import layoutStyles from '@/styles/layout.module.css';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import styles from './contents.module.css';
@@ -32,14 +32,17 @@ export default function Contents() {
   };
 
   return (
-    <div className={layoutStyles.page}>
-      <header className={layoutStyles.header}>
-        <h1>
-          주제를 선택해주세요! {selected.length} / {topicContents.length}
-        </h1>
+    <Page>
+      <Page.Top>
+        <div className={styles.title}>
+          <h1>주제를 선택해주세요!</h1>
+          <h2>
+            {selected.length} / {topicContents.length}
+          </h2>
+        </div>
         <p>당신을 위한 맞춤형 면접이 진행됩니다.</p>
-      </header>
-      <main className={clsx(layoutStyles.list, styles.list)}>
+      </Page.Top>
+      <Page.Main className={styles.list}>
         <SelectionCard
           title="전체 선택"
           isSelected={allSelected}
@@ -59,8 +62,8 @@ export default function Contents() {
             />
           );
         })}
-      </main>
-      <footer className={layoutStyles.footer}>
+      </Page.Main>
+      <Page.Bottom>
         <Button
           backgroundColor={theme.colors.backgroundLight}
           width={100}
@@ -71,8 +74,8 @@ export default function Contents() {
         >
           확인
         </Button>
-      </footer>
-    </div>
+      </Page.Bottom>
+    </Page>
   );
 }
 

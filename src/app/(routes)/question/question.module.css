@@ -1,5 +1,14 @@
 .question {
-  padding: 16px;
+  z-index: 10;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto 16px 0;
+  z-index: 0;
 }
 
 .answer {
@@ -11,6 +20,8 @@
   box-shadow: 5px 5px 4px var(--color-gray100);
   background: white;
   gap: 10px;
+  position: absolute;
+  bottom: 0;
 }
 
 .input {
@@ -22,12 +33,6 @@
   margin: 5px;
   padding: 5px;
   resize: none;
-}
-
-.footer {
-  margin-top: auto;
-  padding: 16px;
-  margin-bottom: 20px;
 }
 
 .button {

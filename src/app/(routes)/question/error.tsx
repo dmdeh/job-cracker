@@ -1,6 +1,6 @@
 'use client';
 
-import layoutStyles from '@/styles/layout.module.css';
+import { Page } from '@/components/common/Page/Page';
 import styles from '@/styles/not-found.module.css';
 
 import { useEffect } from 'react';
@@ -17,7 +17,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className={layoutStyles.page}>
+    <Page>
       <div className={styles.card}>
         <div className={styles.content}>
           <h2 className={styles.title}>문제가 생겼어요!</h2>
@@ -27,6 +27,6 @@ export default function Error({
           </button>
         </div>
       </div>
-    </div>
+    </Page>
   );
 }

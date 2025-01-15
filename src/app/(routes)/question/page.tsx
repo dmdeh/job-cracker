@@ -1,6 +1,6 @@
 'use client';
 
-import layoutStyles from '@/styles/layout.module.css';
+import { Page } from '@/components/common/Page/Page';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import QuestionFeedbackSwitcher from '../../../components/QuestionFeedbackSwitcher/QuestionFeedbackSwitcher';
@@ -48,6 +48,9 @@ export default function Question() {
     }
 
     const answer = textareaRef.current.value;
+    if (answer.trim() === '') {
+      return;
+    }
 
     getTailQuestion(answer);
     textareaRef.current.value = '';
@@ -55,17 +58,18 @@ export default function Question() {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
       handleAnswerSubmit();
     }
   };
 
   return (
-    <div className={layoutStyles.page}>
-      <header className={layoutStyles.header}>
+    <Page>
+      <Page.Top>
         <h1>개발자 기술 면접</h1>
         <p>면접관의 질문에 답변해주세요</p>
-      </header>
-      <main className={styles.question}>
+      </Page.Top>
+      <Page.Main className={styles.question}>
         <QuestionFeedbackSwitcher
           topic={topic || '면접 종료'}
           question={getQuestionMessage()}
@@ -73,8 +77,8 @@ export default function Question() {
           feedback={feedback}
           isLoading={isLoading}
         />
-      </main>
-      <footer className={styles.footer}>
+      </Page.Main>
+      <Page.Bottom className={styles.section}>
         <div className={styles.answer}>
           <textarea
             id="answer"
@@ -91,7 +95,7 @@ export default function Question() {
             ⬆︎
           </button>
         </div>
-      </footer>
-    </div>
+      </Page.Bottom>
+    </Page>
   );
 }

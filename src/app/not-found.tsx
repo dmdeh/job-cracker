@@ -1,10 +1,10 @@
-import layoutStyles from '@/styles/layout.module.css';
+import { Page } from '@/components/common/Page/Page';
 import styles from '@/styles/not-found.module.css';
 import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <div className={layoutStyles.page}>
+    <Page>
       <div className={styles.card}>
         <div className={styles.content}>
           <h1 className={styles.title}>Not Found</h1>
@@ -14,6 +14,6 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
-    </div>
+    </Page>
   );
 }
