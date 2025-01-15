@@ -29,12 +29,14 @@ export async function POST(request: Request) {
       feedback: response.feedback,
       next: response.next,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('OpenAI API Error:', error);
-    return NextResponse.json(
-      { success: false, error: error.message },
-      { status: 500 }
-    );
+    if (error instanceof Error) {
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 }
+      );
+    }
   }
 }
 
