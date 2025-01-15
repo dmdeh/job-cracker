@@ -1,8 +1,9 @@
 'use client';
 
+import SpinCracker from '@/components/common/Loading/SpinCracker';
 import { Page } from '@/components/common/Page/Page';
 import { useSearchParams } from 'next/navigation';
-import { useRef } from 'react';
+import { Suspense, useRef } from 'react';
 import QuestionFeedbackSwitcher from '../../../components/QuestionFeedbackSwitcher/QuestionFeedbackSwitcher';
 import { useQuestion } from '../../../hooks/useQuestion';
 import useToggleSelection from '../../../hooks/useToggleSelection';
@@ -10,6 +11,14 @@ import shuffleArray from '../../../utils/shuffleArray';
 import styles from './question.module.css';
 
 export default function Question() {
+  return (
+    <Suspense fallback={<SpinCracker />}>
+      <QuestionInner />
+    </Suspense>
+  );
+}
+
+function QuestionInner() {
   const searchParams = useSearchParams();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
