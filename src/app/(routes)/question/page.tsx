@@ -18,7 +18,7 @@ export default function Question() {
   const questionList =
     contents === 'all' ? topicContents : contents?.split(',');
 
-  const shuffleQuestion = shuffleArray(questionList || []);
+  const shuffledQuestions = useRef(shuffleArray(questionList || []));
 
   const {
     isLoading,
@@ -29,7 +29,9 @@ export default function Question() {
     getNextQuestion,
     hasMoreQuestions,
     currentIndex,
-  } = useQuestion(shuffleQuestion);
+  } = useQuestion(shuffledQuestions.current);
+
+  const topic = shuffledQuestions.current[currentIndex];
 
   if (error) {
     throw new Error(error);
@@ -65,7 +67,7 @@ export default function Question() {
       </header>
       <main className={styles.question}>
         <QuestionFeedbackSwitcher
-          topic={shuffleQuestion[currentIndex] || '면접 종료'}
+          topic={topic || '면접 종료'}
           question={getQuestionMessage()}
           onNextTopic={getNextQuestion}
           feedback={feedback}
