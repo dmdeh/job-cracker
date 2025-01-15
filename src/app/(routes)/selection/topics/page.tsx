@@ -2,14 +2,24 @@
 
 import { SelectionCard } from '@/components/SelectionCard/SelectionCard';
 import Button from '@/components/common/Button/Button';
+import SpinCracker from '@/components/common/Loading/SpinCracker';
 import { Page } from '@/components/common/Page/Page';
 import { theme } from '@/constants/theme';
 import useToggleSelection from '@/hooks/useToggleSelection';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
+import { Suspense } from 'react';
 import styles from './topics.module.css';
 
 export default function Topics() {
+  return (
+    <Suspense fallback={<SpinCracker />}>
+      <TopicsInner />
+    </Suspense>
+  );
+}
+
+function TopicsInner() {
   const router = useRouter();
   const {
     developer,

@@ -1,4 +1,4 @@
-import { TopicKey } from '@/constants/topics';
+import { TopicKey } from '@/types/developerType';
 
 function getTopicContents(topics: TopicKey, selectedContents: string[]) {
   return Object.entries(topics).reduce<string[]>((acc, [key, value]) => {

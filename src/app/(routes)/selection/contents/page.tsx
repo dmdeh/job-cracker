@@ -2,14 +2,24 @@
 
 import { SelectionCard } from '@/components/SelectionCard/SelectionCard';
 import Button from '@/components/common/Button/Button';
+import SpinCracker from '@/components/common/Loading/SpinCracker';
 import { Page } from '@/components/common/Page/Page';
 import { theme } from '@/constants/theme';
 import useToggleSelection from '@/hooks/useToggleSelection';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
+import { Suspense } from 'react';
 import styles from './contents.module.css';
 
 export default function Contents() {
+  return (
+    <Suspense fallback={<SpinCracker />}>
+      <ContentsInner />
+    </Suspense>
+  );
+}
+
+function ContentsInner() {
   const router = useRouter();
   const {
     developer,
