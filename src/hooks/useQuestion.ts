@@ -55,7 +55,7 @@ export function useQuestion(keywords: string[]) {
 
   useEffect(() => {
     generateQuestion();
-  }, []);
+  }, [currentIndex]);
 
   return {
     isLoading,
