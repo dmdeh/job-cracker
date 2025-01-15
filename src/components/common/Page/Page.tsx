@@ -1,8 +1,10 @@
-import layoutStyles from '@/styles/layout.module.css';
+import clsx from 'clsx';
 import { ReactNode } from 'react';
+import layoutStyles from './Page.module.css';
 
 interface Props {
   children: ReactNode;
+  className?: string;
 }
 
 export const Page = ({ children }: Props) => {
@@ -10,13 +12,13 @@ export const Page = ({ children }: Props) => {
 };
 
 Page.Top = ({ children }: Props) => (
-  <div className={layoutStyles.header}>{children}</div>
+  <div className={layoutStyles.top}>{children}</div>
 );
 
-Page.Main = ({ children }: Props) => (
-  <main className={layoutStyles.main}>{children}</main>
+Page.Main = ({ children, className }: Props) => (
+  <main className={clsx(layoutStyles.main, className)}>{children}</main>
 );
 
-Page.Bottom = ({ children }: Props) => (
-  <div className={layoutStyles.bottom}>{children}</div>
+Page.Bottom = ({ children, className }: Props) => (
+  <div className={clsx(layoutStyles.bottom, className)}>{children}</div>
 );

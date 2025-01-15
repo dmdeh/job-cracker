@@ -1,6 +1,6 @@
 'use client';
 
-import layoutStyles from '@/styles/layout.module.css';
+import { Page } from '@/components/common/Page/Page';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import QuestionFeedbackSwitcher from '../../../components/QuestionFeedbackSwitcher/QuestionFeedbackSwitcher';
@@ -62,12 +62,12 @@ export default function Question() {
   };
 
   return (
-    <div className={layoutStyles.page}>
-      <header className={layoutStyles.header}>
+    <Page>
+      <Page.Top>
         <h1>개발자 기술 면접</h1>
         <p>면접관의 질문에 답변해주세요</p>
-      </header>
-      <main className={styles.question}>
+      </Page.Top>
+      <Page.Main className={styles.question}>
         <QuestionFeedbackSwitcher
           topic={shuffleQuestion[currentIndex] || '면접 종료'}
           question={getQuestionMessage()}
@@ -75,8 +75,8 @@ export default function Question() {
           feedback={feedback}
           isLoading={isLoading}
         />
-      </main>
-      <section className={styles.section}>
+      </Page.Main>
+      <Page.Bottom className={styles.section}>
         <div className={styles.answer}>
           <textarea
             id="answer"
@@ -93,7 +93,7 @@ export default function Question() {
             ⬆︎
           </button>
         </div>
-      </section>
-    </div>
+      </Page.Bottom>
+    </Page>
   );
 }

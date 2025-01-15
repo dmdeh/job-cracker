@@ -2,9 +2,9 @@
 
 import { SelectionCard } from '@/components/SelectionCard/SelectionCard';
 import Button from '@/components/common/Button/Button';
+import { Page } from '@/components/common/Page/Page';
 import { theme } from '@/constants/theme';
 import useToggleSelection from '@/hooks/useToggleSelection';
-import layoutStyles from '@/styles/layout.module.css';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import styles from './topics.module.css';
@@ -29,12 +29,12 @@ export default function Topics() {
   };
 
   return (
-    <div className={layoutStyles.page}>
-      <header className={layoutStyles.header}>
+    <Page>
+      <Page.Top>
         <h1>어떤 주제를 원하시나요?</h1>
         <p>원하는 {developer} 분야를 선택할 수 있어요.</p>
-      </header>
-      <main className={clsx(layoutStyles.list, styles.list)}>
+      </Page.Top>
+      <Page.Main className={styles.list}>
         <SelectionCard
           title="전체 선택"
           isSelected={allSelected}
@@ -54,8 +54,8 @@ export default function Topics() {
             />
           );
         })}
-      </main>
-      <section className={layoutStyles.section}>
+      </Page.Main>
+      <Page.Bottom>
         <Button
           backgroundColor={theme.colors.backgroundLight}
           width={100}
@@ -66,8 +66,8 @@ export default function Topics() {
         >
           확인
         </Button>
-      </section>
-    </div>
+      </Page.Bottom>
+    </Page>
   );
 }
 

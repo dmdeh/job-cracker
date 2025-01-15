@@ -7,7 +7,7 @@
   padding: 50px 0;
 }
 
-.header {
+.top {
   height: 100px;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@
   gap: 5px;
 }
 
-.list {
+.main {
   max-height: 500px;
   width: 100%;
   max-width: 860px;
@@ -28,7 +28,7 @@
   padding: 16px;
 }
 
-.section {
+.bottom {
   height: 100px;
   display: flex;
   justify-content: center;
