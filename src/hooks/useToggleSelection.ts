@@ -1,13 +1,12 @@
 import developers from '@/constants/developer';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getDeveloper } from '../utils/checkTopic';
 import getTopicContents from '../utils/getTopicContents';
 
 const useToggleSelection = (context: 'topics' | 'contents') => {
   const searchParams = useSearchParams();
   const [selected, setSelected] = useState<string[]>([]);
-  const [topicContents, setTopicContents] = useState<string[]>([]);
 
   const developerParam = searchParams.get('developer');
 
@@ -16,11 +15,7 @@ const useToggleSelection = (context: 'topics' | 'contents') => {
   const allTopics = Object.keys(developerTopics);
 
   const topics = searchParams.get('topics')?.split(',') || [];
-
-  useEffect(() => {
-    const contents = getTopicContents(developerTopics, topics);
-    setTopicContents(contents);
-  }, [searchParams]);
+  const topicContents = getTopicContents(developerTopics, topics);
 
   const allSelected =
     context === 'topics'
