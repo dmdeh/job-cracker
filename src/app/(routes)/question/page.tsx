@@ -45,17 +45,18 @@ export default function Question() {
       return;
     }
 
-    let answer = textareaRef.current.value;
+    const answer = textareaRef.current.value;
     if (answer.trim() === '') {
       return;
     }
 
     getTailQuestion(answer);
-    answer = '';
+    textareaRef.current.value = '';
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
       handleAnswerSubmit();
     }
   };
