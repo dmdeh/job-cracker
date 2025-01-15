@@ -1,0 +1,25 @@
+.title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.list {
+  padding: 16px;
+  overflow-y: scroll;
+}
+
+.card {
+  color: var(--color-blue300);
+  background-color: var(--color-background-light);
+}
+
+.selected {
+  color: white;
+  background-color: var(--color-blue300);
+}
+
+.button {
+  box-shadow: 5px 5px 4px var(--color-gray100);
+  border: 2px solid var(--color-blue300);
+}
