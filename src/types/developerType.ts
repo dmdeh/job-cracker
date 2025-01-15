@@ -12,6 +12,8 @@ export type DeveloperDetail = {
 
 export type DeveloperType = DeveloperDetail['type'];
 
+export type TopicKey = (typeof developers)[DeveloperKey]['topics'];
+
 export type DeveloperTypeMap = {
   [K in DeveloperDetail['type']]: DeveloperKey;
 };
