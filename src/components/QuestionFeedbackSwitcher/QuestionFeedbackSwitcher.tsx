@@ -25,7 +25,7 @@ export default function QuestionFeedbackSwitcher({
     if (!isEmptyFeedback) {
       setVisible(true);
     }
-  }, [isEmptyFeedback]);
+  }, [isEmptyFeedback, feedback]);
 
   return (
     <div>
