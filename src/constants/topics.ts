@@ -87,6 +87,16 @@ export const TOPICS_BACKEND = {
     'MongoDB',
     'Redis',
   ],
+  API: [
+    'REST 기본 원칙과 제약조건',
+    'HTTP 메서드와 상태 코드',
+    'API 버전 관리',
+    'API 보안과 인증',
+    'API 문서화',
+    'API 캐싱 전략',
+    'Error Handling',
+    'API 테스팅',
+  ],
 } as const;
 
 export const TOPICS_IOS = {
@@ -115,5 +125,17 @@ export const TOPICS_IOS = {
     '테스팅 (Unit Test, UI Test)',
     '앱 배포 및 앱 스토어',
     'SwiftUI 개요',
+  ],
+  Architecture: [
+    'MVC 패턴',
+    'MVVM 패턴',
+    'Clean Architecture',
+    'Coordinator 패턴',
+    'VIPER 패턴',
+    '의존성 주입',
+    '반응형 프로그래밍 (RxSwift, Combine)',
+    '상태 관리',
+    '테스트 가능한 설계',
+    '모듈화와 컴포넌트 기반 설계',
   ],
 } as const;
