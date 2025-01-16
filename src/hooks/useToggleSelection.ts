@@ -7,6 +7,7 @@ import getTopicContents from '../utils/getTopicContents';
 const useToggleSelection = (context: 'topics' | 'contents') => {
   const searchParams = useSearchParams();
   const [selected, setSelected] = useState<string[]>([]);
+
   const developerParam = searchParams.get('developer');
 
   const developer = getDeveloper(developerParam, context) ?? 'Frontend';
