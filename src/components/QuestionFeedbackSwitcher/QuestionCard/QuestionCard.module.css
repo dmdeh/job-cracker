@@ -24,6 +24,16 @@
   box-shadow: inset 10px 0 0 var(--color-blue200);
 }
 
+@media (max-width: 768px) {
+  .card {
+    padding: 15px;
+  }
+  .question_wrapper {
+    padding: 15px 10px 15px 20px;
+    margin: 15px 0;
+  }
+}
+
 .question {
   font-size: 18px;
   line-height: 1.5;
