@@ -25,11 +25,9 @@ export function useQuestion(keywords: string[]) {
       }
 
       setQuestion(response.question);
-
       if (response.feedback) {
+        console.log(feedback);
         setFeedback(response.feedback);
-      } else {
-        setFeedback({});
       }
 
       if (answer && !response.next) {
@@ -49,7 +47,6 @@ export function useQuestion(keywords: string[]) {
   const getNextQuestion = () => {
     if (hasMoreQuestions) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
-      setFeedback({});
     }
   };
 

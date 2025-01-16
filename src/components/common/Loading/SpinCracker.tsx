@@ -1,5 +1,5 @@
-import Image from "next/image";
-import styles from "./SpinCracker.module.css";
+import Image from 'next/image';
+import styles from './SpinCracker.module.css';
 
 const SpinCracker = () => {
   return (
@@ -10,6 +10,7 @@ const SpinCracker = () => {
       alt="spincracker"
       priority
       className={styles.cracker}
+      unoptimized
     />
   );
 };

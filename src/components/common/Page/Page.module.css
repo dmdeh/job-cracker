@@ -7,6 +7,15 @@
   padding: 50px 0;
 }
 
+@media (max-width: 768px) {
+  .page {
+    padding: 20px 0;
+    min-height: calc(
+      100vh - env(safe-area-inset-bottom)
+    ); /* iOS 안전영역 대응 */
+  }
+}
+
 .top {
   height: 100px;
   display: flex;
