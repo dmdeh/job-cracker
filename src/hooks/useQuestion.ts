@@ -47,7 +47,6 @@ export function useQuestion(keywords: string[]) {
   const getNextQuestion = () => {
     if (hasMoreQuestions) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
-      setFeedback({});
     }
   };
 
