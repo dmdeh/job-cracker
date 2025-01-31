@@ -7,15 +7,6 @@
   padding: 50px 0;
 }
 
-@media (max-width: 768px) {
-  .page {
-    padding: 20px 0;
-    min-height: calc(
-      100vh - env(safe-area-inset-bottom)
-    ); /* iOS 안전영역 대응 */
-  }
-}
-
 .top {
   height: 100px;
   display: flex;
@@ -44,4 +35,26 @@
   align-items: center;
   margin-top: auto;
   padding: 0 16px;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 20px 0;
+    min-height: calc(100vh - env(safe-area-inset-bottom));
+  }
+
+  .top {
+    height: 10vh;
+    min-height: 70px;
+  }
+
+  .main {
+    min-height: 70vh;
+    flex: 1;
+  }
+
+  .bottom {
+    height: 10vh;
+    min-height: 70px;
+  }
 }
