@@ -59,7 +59,7 @@
 
 .nav {
   background-color: var(--color-yellow);
-  color: white;
+  color: var(--color-brown);
   font-size: 2rem;
   font-weight: bold;
   padding: 10px 30px;
