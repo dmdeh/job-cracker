@@ -46,6 +46,7 @@
   .top {
     height: 10vh;
     min-height: 70px;
+    margin-bottom: 0;
   }
 
   .main {
@@ -56,5 +57,6 @@
   .bottom {
     height: 10vh;
     min-height: 70px;
+    margin-top: unset;
   }
 }

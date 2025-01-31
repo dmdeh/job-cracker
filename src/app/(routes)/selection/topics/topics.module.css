@@ -1,8 +1,3 @@
-.list {
-  min-height: 500px;
-  justify-content: center;
-}
-
 .card {
   color: var(--color-blue300);
   background-color: var(--color-background-light);
