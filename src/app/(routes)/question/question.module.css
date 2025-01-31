@@ -42,3 +42,9 @@
   font-size: 30px;
   border: unset;
 }
+
+@media (max-width: 768px) {
+  .section {
+    margin: 0 16px;
+  }
+}
