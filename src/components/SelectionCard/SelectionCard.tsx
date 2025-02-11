@@ -1,5 +1,5 @@
-import clsx from "clsx";
-import styles from "./SelectionCard.module.css";
+import clsx from 'clsx';
+import styles from './SelectionCard.module.css';
 
 interface Props {
   title: string;

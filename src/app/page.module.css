@@ -18,7 +18,7 @@
 .title {
   font-size: 130px;
   font-weight: bold;
-  color: var(--color-yellow);
+  color: var(--color-brown);
   text-align: center;
   white-space: nowrap;
   animation: text-pop-up-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -58,8 +58,8 @@
 }
 
 .nav {
-  background-color: var(--color-yellow);
-  color: white;
+  background-color: var(--color-brown);
+  color: var(--color-background-light);
   font-size: 2rem;
   font-weight: bold;
   padding: 10px 30px;

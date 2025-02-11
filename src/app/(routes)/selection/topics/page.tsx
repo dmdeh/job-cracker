@@ -41,10 +41,15 @@ function TopicsInner() {
   return (
     <Page>
       <Page.Top>
-        <h1>어떤 주제를 원하시나요?</h1>
+        <div className={styles.title}>
+          <h1>원하는 분야가 있나요?</h1>
+          <h2>
+            {selected.length} / {allTopics.length}
+          </h2>
+        </div>
         <p>원하는 {developer} 분야를 선택할 수 있어요.</p>
       </Page.Top>
-      <Page.Main className={styles.list}>
+      <Page.Main>
         <SelectionCard
           title="전체 선택"
           isSelected={allSelected}
