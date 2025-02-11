@@ -1,3 +1,9 @@
+.title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .card {
   color: var(--color-blue300);
   background-color: var(--color-background-light);

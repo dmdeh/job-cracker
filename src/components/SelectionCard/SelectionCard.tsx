@@ -12,7 +12,7 @@ export function SelectionCard(props: Props) {
   const { title, onClick, className } = props;
   return (
     <div className={clsx(styles.card, className)} onClick={onClick}>
-      <h2>{title}</h2>
+      <h3>{title}</h3>
     </div>
   );
 }
