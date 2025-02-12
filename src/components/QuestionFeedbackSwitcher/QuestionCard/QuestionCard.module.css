@@ -61,7 +61,8 @@
   cursor: not-allowed;
 }
 
-.orange_button {
+.pink_button {
   margin-left: 10px;
-  background-color: var(--color-orange);
+  background-color: var(--color-pink);
+  color: var(--color-blue400);
 }

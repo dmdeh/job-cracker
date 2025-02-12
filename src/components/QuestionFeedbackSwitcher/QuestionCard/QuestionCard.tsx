@@ -40,7 +40,7 @@ export default function QuestionCard({
               답변 보기
             </button>
             <button
-              className={clsx(styles.button, styles.orange_button)}
+              className={clsx(styles.button, styles.pink_button)}
               onClick={handleNextTopic}
             >
               다른 주제
