@@ -1,9 +1,11 @@
 # job-cracker
 
+<p align="center"><img width="70%" alt="잡크래커표지" src="https://github.com/user-attachments/assets/dda16a64-07b1-473b-8ef2-189bbcb669ff" /></p>
+
 ## 💡 프로젝트 소개
 
 개발자를 위한 OpenAI 기술을 활용한 기술 면접 준비 사이트입니다.
-다양한 기술 질문에 대한 답변을 연습하고 피드백을 받을 수 있습니다.
+다양한 기술 질문과 꼬리질문에 대한 답변을 연습하고 피드백을 받을 수 있습니다.
 
 ## 🔗 Links
 
@@ -22,17 +24,9 @@
 - 답변에 대한 점수 제공과 피드백 제시
 - 질문에 대한 모범 답안 제시
 
-### 홈 화면, 개발자 선택 페이지
+### 질문 답변 페이지 화면
 
-<img width="50%" alt="스크린샷 2025-01-17 오후 4 00 04" src="https://github.com/user-attachments/assets/3dc30daf-272e-41f5-8fee-68f646b1963d" /><img width="50%" alt="스크린샷 2025-01-17 오후 5 17 13" src="https://github.com/user-attachments/assets/0fa27847-8437-4cf1-8dc6-45884848cff8" />
-
-### 주제, 상세주제 선택 페이지
-
-<img width="50%" alt="스크린샷 2025-01-17 오후 4 26 24" src="https://github.com/user-attachments/assets/99194a4e-f97e-48bf-928e-f7853f6b1c6f" /><img width="50%" alt="스크린샷 2025-01-17 오후 4 26 32" src="https://github.com/user-attachments/assets/ecd448c7-df81-46ac-9dca-d75136f4fa9f" />
-
-### 질문 답변 페이지
-
-<img width="50%" alt="스크린샷 2025-01-17 오후 5 04 21" src="https://github.com/user-attachments/assets/9097229e-cb44-4c2d-a0af-d3dc1aa8afd0" /><img width="50%" alt="스크린샷 2025-01-17 오후 5 05 38" src="https://github.com/user-attachments/assets/8c30a786-c0b5-480a-bdd4-09ebfe77cc9a" />
+<img width="50%" alt="스크린샷 2025-01-17 오후 5 04 21" src="https://github.com/user-attachments/assets/bf5bf24e-4174-4211-8158-77e30d652fd2" /><img width="50%" alt="스크린샷 2025-01-17 오후 5 05 38" src="https://github.com/user-attachments/assets/c6f07a7e-ba15-4ab1-b88d-6882b12ee1e6" />
 
 ## 📂 폴더 구조
 
