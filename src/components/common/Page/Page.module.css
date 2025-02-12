@@ -1,19 +1,10 @@
 .page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
   max-width: 860px;
   margin: 0 auto;
   padding: 50px 0;
-}
-
-@media (max-width: 768px) {
-  .page {
-    padding: 20px 0;
-    min-height: calc(
-      100vh - env(safe-area-inset-bottom)
-    ); /* iOS 안전영역 대응 */
-  }
 }
 
 .top {
@@ -44,4 +35,27 @@
   align-items: center;
   margin-top: auto;
   padding: 0 16px;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 20px 0;
+    min-height: unset;
+  }
+
+  .top {
+    height: 10vh;
+    min-height: 70px;
+    margin-bottom: 0;
+  }
+
+  .main {
+    flex: 1;
+  }
+
+  .bottom {
+    height: 10vh;
+    min-height: 70px;
+    margin-top: unset;
+  }
 }
