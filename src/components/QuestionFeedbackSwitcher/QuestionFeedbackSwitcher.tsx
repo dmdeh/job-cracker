@@ -1,5 +1,5 @@
 import { Feedback } from '@/types/type';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import FeedbackCard from './FeedbackCard/FeedbackCard';
 import QuestionCard from './QuestionCard/QuestionCard';
 
@@ -9,6 +9,8 @@ interface QuestionFeedbackSwitcherProps {
   feedback: Feedback;
   isLoading: boolean;
   onNextTopic: () => void;
+  visible: boolean;
+  setVisible: (visible: boolean) => void;
 }
 
 export default function QuestionFeedbackSwitcher({
@@ -17,9 +19,10 @@ export default function QuestionFeedbackSwitcher({
   feedback,
   isLoading,
   onNextTopic,
+  visible,
+  setVisible,
 }: QuestionFeedbackSwitcherProps) {
   const isEmptyFeedback = Object.values(feedback).every((f) => f == null);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (!isEmptyFeedback) {
