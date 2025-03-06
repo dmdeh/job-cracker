@@ -7,8 +7,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  margin: auto 16px 0;
-  z-index: 0;
+  height: 150px;
 }
 
 .answer {
@@ -20,7 +19,6 @@
   box-shadow: 5px 5px 4px var(--color-gray100);
   background: white;
   gap: 10px;
-  position: absolute;
   bottom: 0;
 }
 
