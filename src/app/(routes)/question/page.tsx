@@ -3,7 +3,7 @@
 import SpinCracker from '@/components/common/Loading/SpinCracker';
 import { Page } from '@/components/common/Page/Page';
 import { useSearchParams } from 'next/navigation';
-import { Suspense, useRef } from 'react';
+import { Suspense, useRef, useState } from 'react';
 import QuestionFeedbackSwitcher from '../../../components/QuestionFeedbackSwitcher/QuestionFeedbackSwitcher';
 import { useQuestion } from '../../../hooks/useQuestion';
 import useToggleSelection from '../../../hooks/useToggleSelection';
@@ -21,6 +21,7 @@ export default function Question() {
 function QuestionInner() {
   const searchParams = useSearchParams();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [visible, setVisible] = useState(false);
 
   const contents = searchParams.get('contents');
   const { topicContents } = useToggleSelection('contents');
@@ -85,25 +86,29 @@ function QuestionInner() {
           onNextTopic={getNextQuestion}
           feedback={feedback}
           isLoading={isLoading}
+          visible={visible}
+          setVisible={setVisible}
         />
       </Page.Main>
       <Page.Bottom className={styles.section}>
-        <div className={styles.answer}>
-          <textarea
-            id="answer"
-            placeholder="답변을 입력해주세요..."
-            className={styles.input}
-            ref={textareaRef}
-            onKeyDown={handleKeyDown}
-          />
-          <button
-            type="submit"
-            className={styles.button}
-            onClick={handleAnswerSubmit}
-          >
-            ⬆︎
-          </button>
-        </div>
+        {!visible && (
+          <div className={styles.answer}>
+            <textarea
+              id="answer"
+              placeholder="답변을 입력해주세요..."
+              className={styles.input}
+              ref={textareaRef}
+              onKeyDown={handleKeyDown}
+            />
+            <button
+              type="submit"
+              className={styles.button}
+              onClick={handleAnswerSubmit}
+            >
+              ⬆︎
+            </button>
+          </div>
+        )}
       </Page.Bottom>
     </Page>
   );
